@@ -1,5 +1,6 @@
 import csv
 import io
+import json
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -50,6 +51,16 @@ def data_dir(tmp_path: Path) -> Path:
 @pytest.fixture
 def client(data_dir: Path) -> TestClient:
     return TestClient(create_app(data_dir=data_dir))
+
+
+def generation_dir(data_dir: Path) -> Path:
+    return next((data_dir / "generations").iterdir())
+
+
+def assert_generation_unavailable(data_dir: Path, path: str = "/stocks") -> None:
+    response = TestClient(create_app(data_dir=data_dir), raise_server_exceptions=False).get(path)
+    assert response.status_code == 503
+    assert response.json() == {"detail": "Authoritative data is unavailable"}
 
 
 def test_vercel_entry_exposes_asgi_application():
@@ -117,6 +128,19 @@ def test_stock_lookup_is_case_insensitive_exact_and_has_per_fund_details(client:
     assert all(item["source_url"].startswith("https://") for item in body["funds"])
     assert client.get("/stocks/app").status_code == 404
     assert client.get("/stocks/DOES-NOT-EXIST").status_code == 404
+
+
+@pytest.mark.parametrize("path", [
+    "/stocks/%20AAPL", "/stocks/AAPL%20", "/stocks/AAPL!",
+    "/funds/%20SPUS/holdings", "/funds/SPUS%20/holdings", "/funds/SPUS!/holdings",
+])
+def test_path_tokens_reject_whitespace_and_malformed_values(client: TestClient, path: str):
+    assert client.get(path).status_code == 404
+
+
+def test_path_tokens_remain_case_insensitive(client: TestClient):
+    assert client.get("/stocks/aApL").status_code == 200
+    assert client.get("/funds/sPuS/holdings").status_code == 200
 
 
 def test_funds_and_fund_holdings_filter_and_pagination(client: TestClient):
@@ -219,7 +243,7 @@ def test_missing_or_invalid_authoritative_data_returns_safe_503(tmp_path: Path):
 
 
 def test_csv_with_missing_required_cell_returns_safe_503(data_dir: Path):
-    generation = next((data_dir / "generations").iterdir())
+    generation = generation_dir(data_dir)
     allowlist = generation / "allowlist.csv"
     allowlist.write_text(
         allowlist.read_text(encoding="utf-8").replace("AAPL,Apple Inc,", "AAPL,,"),
@@ -231,6 +255,68 @@ def test_csv_with_missing_required_cell_returns_safe_503(data_dir: Path):
 
     assert response.status_code == 503
     assert response.json() == {"detail": "Authoritative data is unavailable"}
+
+
+@pytest.mark.parametrize("mutation", [
+    "holding_date_mismatch",
+    "holding_source_mismatch",
+    "javascript_url",
+    "nan_metadata",
+    "infinity_metadata",
+    "null_metadata",
+    "malformed_number",
+    "negative_number",
+    "malformed_ticker",
+    "membership_mismatch",
+    "union_mismatch",
+])
+def test_incoherent_or_malformed_generation_returns_safe_503(data_dir: Path, mutation: str):
+    generation = generation_dir(data_dir)
+    holdings_path = generation / "holdings.csv"
+    allowlist_path = generation / "allowlist.csv"
+    metadata_path = generation / "metadata.json"
+    holdings = holdings_path.read_text(encoding="utf-8")
+    allowlist = allowlist_path.read_text(encoding="utf-8")
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+
+    if mutation == "holding_date_mismatch":
+        holdings = holdings.replace("2026-07-31", "2026-07-30", 1)
+    elif mutation == "holding_source_mismatch":
+        holdings = holdings.replace("https://official.test/HLAL.csv", "https://other.test/HLAL.csv", 1)
+    elif mutation == "javascript_url":
+        metadata["funds"][0]["source_url"] = "javascript:alert(1)"
+    elif mutation == "nan_metadata":
+        raw = metadata_path.read_text(encoding="utf-8").replace(
+            '"source_row_count": 2', '"source_row_count": NaN', 1,
+        )
+        metadata_path.write_text(raw, encoding="utf-8")
+        assert_generation_unavailable(data_dir)
+        return
+    elif mutation == "infinity_metadata":
+        raw = metadata_path.read_text(encoding="utf-8").replace(
+            '"source_row_count": 2', '"source_row_count": Infinity', 1,
+        )
+        metadata_path.write_text(raw, encoding="utf-8")
+        assert_generation_unavailable(data_dir)
+        return
+    elif mutation == "null_metadata":
+        metadata["funds"][0]["source_row_count"] = None
+    elif mutation == "malformed_number":
+        holdings = holdings.replace(",40.00,", ",not-a-number,", 1)
+    elif mutation == "negative_number":
+        holdings = holdings.replace(",40.00,", ",-40.00,", 1)
+    elif mutation == "malformed_ticker":
+        holdings = holdings.replace(",AAPL,", ",AAP L,")
+        allowlist = allowlist.replace("AAPL,", "AAP L,")
+    elif mutation == "membership_mismatch":
+        allowlist = allowlist.replace("HLAL+MNZL+SPUS", "HLAL+SPUS", 1)
+    elif mutation == "union_mismatch":
+        metadata["unique_symbols"] += 1
+
+    holdings_path.write_text(holdings, encoding="utf-8")
+    allowlist_path.write_text(allowlist, encoding="utf-8")
+    metadata_path.write_text(json.dumps(metadata), encoding="utf-8")
+    assert_generation_unavailable(data_dir)
 
 
 def test_each_request_reloads_one_coherent_generation(data_dir: Path):

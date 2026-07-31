@@ -11,6 +11,7 @@ from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse, Response
 from fastapi.templating import Jinja2Templates
 
+from .models import TICKER_RE
 from .repository import DataUnavailable, FUNDS, HoldingsRepository, Snapshot
 
 DEFAULT_PAGE_SIZE = 50
@@ -31,8 +32,8 @@ def _meta(snapshot: Snapshot) -> dict[str, str]:
 
 
 def _normalize_fund(fund: str, *, not_found: bool = False) -> str:
-    normalized = fund.strip().upper()
-    if normalized not in FUNDS:
+    normalized = fund.upper()
+    if fund != fund.strip() or normalized not in FUNDS:
         status = 404 if not_found else 422
         raise HTTPException(status_code=status, detail=f"Unsupported fund: {fund}")
     return normalized
@@ -154,7 +155,9 @@ def create_app(data_dir: Path | str | None = None) -> FastAPI:
 
     @app.get("/stocks/{symbol}", tags=["stocks"])
     def stock(symbol: str, snapshot: Annotated[Snapshot, Depends(_snapshot)]):
-        normalized = symbol.strip().upper()
+        normalized = symbol.upper()
+        if symbol != symbol.strip() or not TICKER_RE.fullmatch(normalized):
+            raise HTTPException(status_code=404, detail="Stock not found")
         allow = next((row for row in snapshot.allowlist if row["symbol"] == normalized), None)
         if allow is None:
             raise HTTPException(status_code=404, detail="Stock not found")
