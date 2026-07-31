@@ -1,0 +1,5 @@
+Date,Account,StockTicker,CUSIP,SecurityName,Shares,Price,MarketValue,Weightings,NetAssets,SharesOutstanding,CreationUnits,MoneyMarketFlag
+07/31/2026,SPUS,AAPL,037833100,Apple Inc,100,200,20000,60.00%,33333,1000,1,
+07/31/2026,SPUS,MSFT,594918104,Microsoft Corp,50,200,10000,30.00%,33333,1000,1,
+07/31/2026,SPUS,CASH&OTHER,,Cash,1,3333,3333,10.00%,33333,1000,1,Y
+07/31/2026,SPUS,GHOST,000000000,Residual,0,0,0,0.00%,33333,1000,1,
