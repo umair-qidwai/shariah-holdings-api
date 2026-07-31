@@ -1,6 +1,7 @@
 import csv
 import io
 import json
+import subprocess
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -12,6 +13,7 @@ from fastapi.testclient import TestClient
 from api.index import app as vercel_app
 from shariah_holdings.api import create_app
 from shariah_holdings.refresh import ValidationPolicy, refresh_to_directory
+from shariah_holdings.repository import DataUnavailable, HoldingsRepository
 
 FIXTURES = Path(__file__).parent / "fixtures"
 POLICY = ValidationPolicy(
@@ -335,3 +337,116 @@ def test_each_request_reloads_one_coherent_generation(data_dir: Path):
     download = client.get("/downloads/holdings.csv")
     assert "Apple Computer" in download.text
     assert client.get("/downloads/shariah-list.csv").text.count("2026-07-31T19:00:00Z") == 4
+
+
+def test_raw_generation_tampering_is_rejected_by_digest(data_dir: Path):
+    holdings = generation_dir(data_dir) / "holdings.csv"
+    # A blank record leaves parsed data unchanged; raw-byte verification catches it.
+    holdings.write_bytes(holdings.read_bytes() + b"\n")
+    assert_generation_unavailable(data_dir)
+
+
+def test_unicode_case_aliases_are_rejected_before_normalization(client: TestClient):
+    assert client.get("/funds/%C5%BFpus/holdings").status_code == 404
+    assert client.get("/stocks", params={"fund": "ſpus"}).status_code == 422
+    # Python uppercases the long-s alias to S; without the ASCII check this is MSFT.
+    assert client.get("/stocks/m%C5%BFft").status_code == 404
+
+
+def test_repository_caches_and_reloads_on_file_or_pointer_change(data_dir: Path):
+    repository = HoldingsRepository(data_dir)
+    first = repository.load()
+    assert repository.load() is first
+
+    holdings = generation_dir(data_dir) / "holdings.csv"
+    holdings.write_bytes(holdings.read_bytes() + b"\n")
+    with pytest.raises(DataUnavailable):
+        repository.load()
+
+    refresh_to_directory(sources(apple_name="Apple Computer"), data_dir, POLICY, NOW.replace(hour=19))
+    reloaded = repository.load()
+    assert reloaded is not first
+    assert reloaded.generation != first.generation
+    assert any(row["name"] == "Apple Computer" for row in reloaded.holdings_by_symbol["AAPL"])
+
+
+@pytest.mark.parametrize("limit_name", ["file", "rows", "field"])
+def test_explicit_generation_limits_fail_closed_and_cheaply(
+    data_dir: Path, monkeypatch: pytest.MonkeyPatch, limit_name: str,
+):
+    import shariah_holdings.repository as repository_module
+
+    if limit_name == "file":
+        limits = dict(repository_module.MAX_FILE_BYTES)
+        limits["holdings.csv"] = 1
+        monkeypatch.setattr(repository_module, "MAX_FILE_BYTES", limits)
+    elif limit_name == "rows":
+        limits = dict(repository_module.MAX_ROWS)
+        limits["holdings.csv"] = 1
+        monkeypatch.setattr(repository_module, "MAX_ROWS", limits)
+    else:
+        monkeypatch.setattr(repository_module, "MAX_FIELD_LENGTH", 5)
+    assert_generation_unavailable(data_dir)
+
+
+def test_openapi_has_named_response_schema_refs_for_every_json_endpoint(client: TestClient):
+    schema = client.get("/openapi.json").json()
+    expected = {
+        "/health": "Health", "/metadata": "Metadata", "/stocks": "StocksPage",
+        "/stocks/{symbol}": "StockDetail", "/funds": "FundsResponse",
+        "/funds/{fund}/holdings": "FundHoldingsPage", "/overlap": "OverlapResponse",
+    }
+    for path, model in expected.items():
+        response_schema = schema["paths"][path]["get"]["responses"]["200"]["content"]["application/json"]["schema"]
+        assert response_schema["$ref"] == f"#/components/schemas/{model}"
+        assert model in schema["components"]["schemas"]
+
+
+def test_vercel_entry_imports_in_isolated_python_without_editable_install():
+    root = Path(__file__).parents[1]
+    script = (
+        "import importlib.util; "
+        f"p={str(root / 'api' / 'index.py')!r}; "
+        "s=importlib.util.spec_from_file_location('vercel_index',p); "
+        "m=importlib.util.module_from_spec(s); s.loader.exec_module(m); "
+        "assert m.app.title == 'Shariah Holdings API'"
+    )
+    result = subprocess.run(
+        [str(root / ".venv" / "bin" / "python"), "-I", "-c", script],
+        cwd="/", capture_output=True, text=True, check=False,
+    )
+    assert result.returncode == 0, result.stderr
+
+
+def test_generation_cache_headers_conditional_requests_and_503_no_store(
+    client: TestClient, tmp_path: Path,
+):
+    for path in ["/health", "/stocks", "/downloads/holdings.csv"]:
+        response = client.get(path)
+        assert response.headers["etag"].startswith('"')
+        assert response.headers["cache-control"] == "public, max-age=300, must-revalidate"
+        conditional = client.get(path, headers={"If-None-Match": response.headers["etag"]})
+        assert conditional.status_code == 304
+        assert conditional.content == b""
+
+    unavailable = TestClient(create_app(tmp_path / "missing"), raise_server_exceptions=False).get("/health")
+    assert unavailable.status_code == 503
+    assert unavailable.headers["cache-control"] == "no-store"
+
+
+def test_security_headers_and_deliberate_read_only_public_cors(client: TestClient):
+    for path in ["/", "/health"]:
+        response = client.get(path, headers={"Origin": "https://consumer.example"})
+        assert response.headers["access-control-allow-origin"] == "*"
+        assert response.headers["x-content-type-options"] == "nosniff"
+        assert response.headers["x-frame-options"] == "DENY"
+        assert response.headers["referrer-policy"] == "no-referrer"
+        assert "default-src 'self'" in response.headers["content-security-policy"]
+        assert "access-control-allow-credentials" not in response.headers
+    preflight = client.options("/stocks", headers={
+        "Origin": "https://consumer.example", "Access-Control-Request-Method": "POST",
+    })
+    assert preflight.status_code == 400
+    rejected_write = client.post("/stocks", headers={"Origin": "https://consumer.example"})
+    assert rejected_write.status_code == 405
+    assert "access-control-allow-origin" not in rejected_write.headers

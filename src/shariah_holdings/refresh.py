@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import csv
 import errno
-import hashlib
 import io
 import json
 import os
@@ -17,6 +16,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
+from .generation import generation_id
 from .models import CUSIP_RE, Exclusion, FundData, Holding, TICKER_RE
 
 STANDARD_COLUMNS = {"Date", "Account", "StockTicker", "SecurityName", "Shares", "MarketValue", "Weightings"}
@@ -292,12 +292,7 @@ def build_outputs(funds: Iterable[FundData], checked_at: datetime) -> dict[str, 
 
 
 def _generation_id(outputs: Mapping[str, str]) -> str:
-    digest = hashlib.sha256()
-    for name in sorted(outputs):
-        digest.update(name.encode())
-        digest.update(b"\0")
-        digest.update(outputs[name].encode())
-    return digest.hexdigest()[:24]
+    return generation_id(outputs)
 
 
 def load_current_outputs(output_dir: Path) -> dict[str, str]:

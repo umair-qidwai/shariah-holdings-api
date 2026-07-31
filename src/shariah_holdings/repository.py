@@ -7,13 +7,16 @@ import io
 import json
 import math
 import re
+import threading
 from dataclasses import dataclass
 from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Any
+from types import MappingProxyType
+from typing import Any, Mapping
 from urllib.parse import urlsplit
 
+from .generation import generation_id as compute_generation_id
 from .models import CUSIP_RE, TICKER_RE
 
 EXPECTED_FILES = {"allowlist.csv", "holdings.csv", "metadata.json"}
@@ -32,6 +35,11 @@ FUND_METADATA_FIELDS = {
 }
 EXCLUSION_FIELDS = {"reason", "row_number", "symbol"}
 EXCLUSION_REASONS = {"cash_or_money_market", "zero_value_residual", "malformed_identifier"}
+MAX_MANIFEST_BYTES = 4096
+MAX_FILE_BYTES = {"allowlist.csv": 5_000_000, "holdings.csv": 25_000_000, "metadata.json": 5_000_000}
+MAX_ROWS = {"allowlist.csv": 100_000, "holdings.csv": 300_000}
+MAX_FIELD_LENGTH = 4096
+MAX_JSON_ITEMS = 300_000
 
 
 class DataUnavailable(RuntimeError):
@@ -41,11 +49,14 @@ class DataUnavailable(RuntimeError):
 @dataclass(frozen=True)
 class Snapshot:
     generation: str
-    allowlist: tuple[dict[str, str], ...]
-    holdings: tuple[dict[str, str], ...]
-    metadata: dict[str, Any]
+    allowlist: tuple[Mapping[str, str], ...]
+    holdings: tuple[Mapping[str, str], ...]
+    metadata: Mapping[str, Any]
     allowlist_csv: str
     holdings_csv: str
+    holdings_by_symbol: Mapping[str, tuple[Mapping[str, str], ...]]
+    holdings_by_fund: Mapping[str, tuple[Mapping[str, str], ...]]
+    allowlist_by_symbol: Mapping[str, Mapping[str, str]]
 
     @property
     def checked_at(self) -> str:
@@ -53,18 +64,27 @@ class Snapshot:
 
 
 class HoldingsRepository:
-    """Loads a complete snapshot through ``current.json`` for every operation.
-
-    Reloading per request avoids stale process-local state while reading all files
-    from the single generation selected by one pointer read.
-    """
+    """Cache a validated snapshot until the pointer or a generation file changes."""
 
     def __init__(self, data_dir: Path | str):
         self.data_dir = Path(data_dir)
+        self._cache: tuple[tuple[Any, ...], Snapshot] | None = None
+        self._lock = threading.Lock()
 
     def load(self) -> Snapshot:
+        with self._lock:
+            return self._load_locked()
+
+    def _load_locked(self) -> Snapshot:
         try:
-            manifest = self._read_json((self.data_dir / "current.json").read_text(encoding="utf-8"))
+            pointer = self.data_dir / "current.json"
+            pointer_stat = pointer.stat()
+            if pointer_stat.st_size > MAX_MANIFEST_BYTES:
+                raise ValueError("manifest is too large")
+            pointer_raw = pointer.read_bytes()
+            if len(pointer_raw) > MAX_MANIFEST_BYTES:
+                raise ValueError("manifest is too large")
+            manifest = self._read_json(pointer_raw.decode("utf-8"))
             if not isinstance(manifest, dict) or set(manifest) != {"generation", "path", "files"}:
                 raise ValueError("invalid manifest")
             generation_id = manifest.get("generation")
@@ -80,30 +100,81 @@ class HoldingsRepository:
             generation = self.data_dir / "generations" / generation_id
             if generation.resolve().parent != generations or not generation.is_dir():
                 raise ValueError("invalid generation directory")
-            outputs: dict[str, str] = {}
-            for name in EXPECTED_FILES:
+            paths: dict[str, Path] = {}
+            file_identity: list[tuple[str, int, int, int, int]] = []
+            for name in sorted(EXPECTED_FILES):
                 path = generation / name
                 if path.resolve().parent != generation.resolve() or not path.is_file():
                     raise ValueError("invalid generation file")
-                outputs[name] = path.read_text(encoding="utf-8")
+                stat = path.stat()
+                if stat.st_size > MAX_FILE_BYTES[name]:
+                    raise ValueError("generation file is too large")
+                paths[name] = path
+                file_identity.append(
+                    (name, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns, stat.st_ino)
+                )
+
+            identity = (
+                pointer_stat.st_size,
+                pointer_stat.st_mtime_ns,
+                pointer_stat.st_ctime_ns,
+                pointer_stat.st_ino,
+                generation_id,
+                *file_identity,
+            )
+            if self._cache is not None and self._cache[0] == identity:
+                return self._cache[1]
+
+            raw_outputs: dict[str, bytes] = {}
+            outputs: dict[str, str] = {}
+            for name in sorted(EXPECTED_FILES):
+                raw = paths[name].read_bytes()
+                if len(raw) > MAX_FILE_BYTES[name]:
+                    raise ValueError("generation file is too large")
+                raw_outputs[name] = raw
+                outputs[name] = raw.decode("utf-8")
+            if compute_generation_id(raw_outputs) != generation_id:
+                raise ValueError("generation digest mismatch")
 
             allowlist = self._read_csv(outputs["allowlist.csv"], ALLOWLIST_FIELDS)
             holdings = self._read_csv(outputs["holdings.csv"], HOLDING_FIELDS)
             metadata = self._read_json(outputs["metadata.json"])
             self._validate(allowlist, holdings, metadata)
-            return Snapshot(
+            frozen_allowlist = tuple(MappingProxyType(row) for row in allowlist)
+            frozen_holdings = tuple(MappingProxyType(row) for row in holdings)
+            by_symbol: dict[str, list[Mapping[str, str]]] = {}
+            by_fund: dict[str, list[Mapping[str, str]]] = {fund: [] for fund in FUNDS}
+            for row in frozen_holdings:
+                by_symbol.setdefault(row["symbol"], []).append(row)
+                by_fund[row["fund"]].append(row)
+            snapshot = Snapshot(
                 generation=generation_id,
-                allowlist=tuple(allowlist),
-                holdings=tuple(holdings),
-                metadata=metadata,
+                allowlist=frozen_allowlist,
+                holdings=frozen_holdings,
+                metadata=self._freeze(metadata),
                 allowlist_csv=outputs["allowlist.csv"],
                 holdings_csv=outputs["holdings.csv"],
+                holdings_by_symbol=MappingProxyType({key: tuple(value) for key, value in by_symbol.items()}),
+                holdings_by_fund=MappingProxyType({key: tuple(value) for key, value in by_fund.items()}),
+                allowlist_by_symbol=MappingProxyType({row["symbol"]: row for row in frozen_allowlist}),
             )
+            self._cache = (identity, snapshot)
+            return snapshot
         except (
             OSError, UnicodeError, ValueError, TypeError, OverflowError, RecursionError,
             json.JSONDecodeError, csv.Error, KeyError,
         ) as exc:
             raise DataUnavailable("authoritative data is unavailable") from exc
+
+    @staticmethod
+    def _freeze(value: Any) -> Any:
+        if isinstance(value, dict):
+            return MappingProxyType({
+                key: HoldingsRepository._freeze(item) for key, item in value.items()
+            })
+        if isinstance(value, list):
+            return tuple(HoldingsRepository._freeze(item) for item in value)
+        return value
 
     @staticmethod
     def _read_json(raw: str) -> Any:
@@ -112,8 +183,18 @@ class HoldingsRepository:
 
         value = json.loads(raw, parse_constant=reject_constant)
 
+        seen_items = 0
+
         def validate_json(item: Any) -> None:
-            if item is None or isinstance(item, (str, bool, int)):
+            nonlocal seen_items
+            seen_items += 1
+            if seen_items > MAX_JSON_ITEMS:
+                raise ValueError("too many JSON values")
+            if isinstance(item, str):
+                if len(item) > MAX_FIELD_LENGTH:
+                    raise ValueError("JSON value is too long")
+                return
+            if item is None or isinstance(item, (bool, int)):
                 return
             if isinstance(item, float):
                 if not math.isfinite(item):
@@ -123,7 +204,9 @@ class HoldingsRepository:
                 for child in item:
                     validate_json(child)
                 return
-            if isinstance(item, dict) and all(isinstance(key, str) for key in item):
+            if isinstance(item, dict) and all(
+                isinstance(key, str) and len(key) <= MAX_FIELD_LENGTH for key in item
+            ):
                 for child in item.values():
                     validate_json(child)
                 return
@@ -137,7 +220,14 @@ class HoldingsRepository:
         reader = csv.DictReader(io.StringIO(raw))
         if tuple(reader.fieldnames or ()) != fields:
             raise ValueError("unexpected CSV schema")
-        rows = list(reader)
+        limit = MAX_ROWS["holdings.csv" if fields == HOLDING_FIELDS else "allowlist.csv"]
+        rows = []
+        for row in reader:
+            if len(rows) >= limit:
+                raise ValueError("too many CSV rows")
+            if any(value is not None and len(value) > MAX_FIELD_LENGTH for value in row.values()):
+                raise ValueError("CSV field is too long")
+            rows.append(row)
         if any(None in row or any(value is None for value in row.values()) for row in rows):
             raise ValueError("malformed CSV row")
         required = set(fields) - (OPTIONAL_HOLDING_FIELDS if fields == HOLDING_FIELDS else set())
@@ -242,7 +332,9 @@ class HoldingsRepository:
             for row in allowlist
         ):
             raise ValueError("allowlist membership and holdings disagree")
-        names = {symbol: {row["name"] for row in holdings if row["symbol"] == symbol} for symbol in symbols}
+        names: dict[str, set[str]] = {symbol: set() for symbol in symbols}
+        for row in holdings:
+            names[row["symbol"]].add(row["name"])
         if any(row["name"] not in names[row["symbol"]] for row in allowlist):
             raise ValueError("allowlist names and holdings disagree")
 
@@ -295,10 +387,3 @@ class HoldingsRepository:
             return parsed.scheme in {"http", "https"} and bool(parsed.hostname)
         except ValueError:
             return False
-
-    @staticmethod
-    def holdings_by_symbol(snapshot: Snapshot) -> dict[str, list[dict[str, str]]]:
-        result: dict[str, list[dict[str, str]]] = {}
-        for row in snapshot.holdings:
-            result.setdefault(row["symbol"], []).append(row)
-        return result
