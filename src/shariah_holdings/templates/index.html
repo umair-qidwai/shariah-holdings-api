@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shariah Holdings</title>
+  <style>
+    :root { color-scheme: dark; --bg:#07130f; --panel:#10231b; --line:#254536; --text:#edf8f1; --muted:#a9c3b3; --accent:#69dda0; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:radial-gradient(circle at 15% 0,#173d2b 0,transparent 32rem),var(--bg); color:var(--text); font:16px/1.55 system-ui,-apple-system,sans-serif; }
+    main { width:min(1080px,calc(100% - 2rem)); margin:auto; padding:4.5rem 0; }
+    header { max-width:760px; margin-bottom:2.5rem; }
+    .eyebrow { color:var(--accent); font-weight:750; letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; }
+    h1 { margin:.4rem 0 .75rem; font-size:clamp(2.5rem,7vw,5.2rem); line-height:.98; letter-spacing:-.055em; }
+    h2 { font-size:1.25rem; margin:0 0 1rem; }
+    p { color:var(--muted); }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .button { padding:.7rem 1rem; border:1px solid var(--line); border-radius:999px; text-decoration:none; background:#122d21; }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    .card,.section { border:1px solid var(--line); background:color-mix(in srgb,var(--panel) 92%,transparent); border-radius:18px; padding:1.25rem; box-shadow:0 16px 50px #0003; }
+    .card span { display:block; color:var(--muted); font-size:.85rem; }
+    .card strong { display:block; font-size:2rem; margin-top:.15rem; }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+    dl { display:grid; grid-template-columns:1fr auto; gap:.6rem 1rem; margin:0; }
+    dt { color:var(--muted); } dd { margin:0; font-weight:700; }
+    .sources { margin-top:1rem; }
+    .sources ul { padding-left:1.2rem; color:var(--muted); }
+    footer { margin-top:2rem; color:var(--muted); font-size:.85rem; }
+    code { overflow-wrap:anywhere; }
+    @media (max-width:760px) { main{padding:2.5rem 0}.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr} }
+    @media (max-width:420px) { .grid{grid-template-columns:1fr}.card{display:flex;align-items:center;justify-content:space-between}.card strong{font-size:1.6rem} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Validated ETF data</div>
+    <h1>Shariah Holdings</h1>
+    <p>A transparent, read-only view of the equity holdings reported by three Shariah-focused ETFs. Last refresh: <code>{{ snapshot.checked_at }}</code>.</p>
+    <nav class="actions" aria-label="Data links">
+      <a class="button" href="/docs">API docs</a>
+      <a class="button" href="/downloads/shariah-list.csv">Download Shariah list</a>
+      <a class="button" href="/downloads/holdings.csv">Download holdings</a>
+    </nav>
+  </header>
+
+  <section class="grid" aria-label="Holding counts">
+    {% for fund in ["SPUS", "HLAL", "MNZL"] %}
+    <article class="card"><span>{{ fund }}</span><strong>{{ overlap.fund_totals[fund] }}</strong></article>
+    {% endfor %}
+    <article class="card"><span>Union</span><strong>{{ overlap.union }}</strong></article>
+  </section>
+
+  <section class="two">
+    <article class="section">
+      <h2>Overlap breakdown</h2>
+      <dl>
+        <dt>Exactly one ETF</dt><dd>{{ overlap.exactly_one }}</dd>
+        <dt>At least two ETFs</dt><dd>{{ overlap.at_least_two }}</dd>
+        <dt>All three ETFs</dt><dd>{{ overlap.exact_only.SPUS_HLAL_MNZL }}</dd>
+        <dt>SPUS + HLAL only</dt><dd>{{ overlap.exact_only.SPUS_HLAL }}</dd>
+        <dt>SPUS + MNZL only</dt><dd>{{ overlap.exact_only.SPUS_MNZL }}</dd>
+        <dt>HLAL + MNZL only</dt><dd>{{ overlap.exact_only.HLAL_MNZL }}</dd>
+      </dl>
+    </article>
+    <article class="section">
+      <h2>What this data means</h2>
+      <p>Holdings come from official fund-publisher sources and are normalized into an exact ticker union. A ticker's presence reflects reported ETF membership, not individualized religious or investment advice.</p>
+      <p>Refreshes are <strong>fail-closed</strong>: incomplete, stale, or malformed source data is rejected, so a failed refresh cannot replace the last validated generation.</p>
+    </article>
+  </section>
+
+  <section class="section sources">
+    <h2>Sources and as-of dates</h2>
+    <ul>
+      {% for fund in ["SPUS", "HLAL", "MNZL"] %}
+      <li><strong>{{ fund }}</strong> — {{ funds[fund].holding_count }} equities as of {{ funds[fund].holdings_date }} · <a href="{{ funds[fund].source_url }}" rel="noreferrer">official source</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  <footer>Generation <code>{{ snapshot.generation }}</code> · See <a href="/metadata">refresh metadata</a> or query the <a href="/openapi.json">OpenAPI schema</a>.</footer>
+</main>
+</body>
+</html>
