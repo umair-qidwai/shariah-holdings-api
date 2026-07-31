@@ -1,0 +1,77 @@
+{
+  "acquired_at": "2026-07-31T23:30:00Z",
+  "checked_at": "2026-07-31T23:30:00Z",
+  "funds": [
+    {
+      "excluded_row_count": 2,
+      "exclusions": [
+        {
+          "reason": "zero_value_residual",
+          "row_number": 2,
+          "symbol": "2602335D"
+        },
+        {
+          "reason": "cash_or_money_market",
+          "row_number": 214,
+          "symbol": "CASH&OTHER"
+        }
+      ],
+      "fund": "HLAL",
+      "holding_count": 211,
+      "holdings_date": "2026-07-31",
+      "source_row_count": 213,
+      "source_url": "https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0"
+    },
+    {
+      "excluded_row_count": 3,
+      "exclusions": [
+        {
+          "reason": "cash_or_money_market",
+          "row_number": 41,
+          "symbol": "CASH&OTHER"
+        },
+        {
+          "reason": "malformed_identifier",
+          "row_number": 490,
+          "symbol": "2602335D"
+        },
+        {
+          "reason": "malformed_identifier",
+          "row_number": 491,
+          "symbol": "2645536D"
+        }
+      ],
+      "fund": "MNZL",
+      "holding_count": 487,
+      "holdings_date": "2026-07-31",
+      "source_row_count": 490,
+      "source_url": "https://manzilfunds.com/"
+    },
+    {
+      "excluded_row_count": 3,
+      "exclusions": [
+        {
+          "reason": "cash_or_money_market",
+          "row_number": 50,
+          "symbol": "CASH&OTHER"
+        },
+        {
+          "reason": "zero_value_residual",
+          "row_number": 219,
+          "symbol": "003654100CVR"
+        },
+        {
+          "reason": "zero_value_residual",
+          "row_number": 220,
+          "symbol": "2602335D"
+        }
+      ],
+      "fund": "SPUS",
+      "holding_count": 216,
+      "holdings_date": "2026-07-31",
+      "source_row_count": 219,
+      "source_url": "https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv"
+    }
+  ],
+  "unique_symbols": 531
+}

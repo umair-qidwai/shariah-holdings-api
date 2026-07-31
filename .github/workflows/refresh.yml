@@ -1,0 +1,76 @@
+name: Refresh holdings
+
+on:
+  schedule:
+    # Weekdays after the regular US market close (18:30 EST / 19:30 EDT).
+    - cron: "30 23 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: holdings-refresh-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project and test/browser extras
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[test,browser]"
+
+      - name: Install Playwright Chromium and system dependencies
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run full test suite
+        run: python -m pytest
+
+      - name: Select latest staged official MNZL export
+        id: mnzl
+        shell: bash
+        run: |
+          set -euo pipefail
+          fallback="$(printf '%s\n' sources/mnzl-official-holdings-????-??-??.csv | sort | tail -n 1)"
+          test -f "$fallback"
+          printf 'fallback=%s\n' "$fallback" >> "$GITHUB_OUTPUT"
+
+      - name: Refresh fail-closed generation
+        run: >-
+          python -m shariah_holdings.cli
+          --output-dir data
+          --mnzl-fallback-csv "${{ steps.mnzl.outputs.fallback }}"
+
+      - name: Verify generated API snapshot and floors
+        run: python scripts/verify_generation.py --data-dir data
+
+      - name: Commit and push changed generated data only
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet --exit-code -- data &&
+             test -z "$(git ls-files --others --exclude-standard -- data)"; then
+            echo "Generated data is unchanged; nothing to commit."
+            exit 0
+          fi
+          git add -- data
+          if git diff --cached --quiet --exit-code; then
+            echo "No tracked generated changes after staging; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(data): refresh validated holdings"
+          git push

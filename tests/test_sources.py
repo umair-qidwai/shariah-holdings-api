@@ -4,8 +4,8 @@ from pathlib import Path
 import httpx
 import pytest
 
-from shariah_holdings.sources import (HLAL_CSV_URL, SPUS_CSV_URL, HttpDownloader,
-                                      MnzlAcquirer, acquire_all_sources,
+from shariah_holdings.sources import (HLAL_CSV_URL, SPUS_CSV_URL, DateConflictError,
+                                      HttpDownloader, MnzlAcquirer, acquire_all_sources,
                                       playwright_mnzl_download)
 
 
@@ -92,6 +92,56 @@ def test_mnzl_local_filename_date_must_match_supplied_date(tmp_path):
     export.write_text("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", encoding="utf-8")
     with pytest.raises(ValueError, match="conflicts with issuer"):
         MnzlAcquirer(None, None).acquire(export, as_of_date=date(2026, 7, 30))
+
+
+def test_mnzl_fallback_is_used_only_after_live_acquisition_failure(tmp_path):
+    fallback = tmp_path / "mnzl-official-holdings-2026-07-31.csv"
+    fallback.write_text("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", encoding="utf-8")
+    calls = []
+
+    class Blocked:
+        def get_text(self, url):
+            calls.append(("direct", url))
+            raise RuntimeError("blocked")
+
+    def broken_browser(url):
+        calls.append(("browser", url))
+        raise RuntimeError("browser blocked")
+
+    result = MnzlAcquirer(Blocked(), broken_browser).acquire(fallback_export=fallback)
+    assert result[2] == fallback.name
+    assert [kind for kind, _ in calls] == ["direct", "browser"]
+
+
+def test_mnzl_fallback_is_not_used_for_explicit_date_conflict(tmp_path):
+    fallback = tmp_path / "mnzl-official-holdings-2026-07-30.csv"
+    fallback.write_text("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", encoding="utf-8")
+
+    class Direct:
+        def get_text(self, url):
+            if url.endswith("/"):
+                return ('Holdings as of 2026-07-31 '
+                        '<a href="/wp-content/download">Download holdings</a>')
+            return "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n"
+
+    with pytest.raises(DateConflictError, match="conflicts with issuer"):
+        MnzlAcquirer(Direct(), None).acquire(
+            as_of_date=date(2026, 7, 30), fallback_export=fallback)
+
+
+def test_mnzl_verified_live_result_wins_over_fallback(tmp_path):
+    fallback = tmp_path / "mnzl-official-holdings-2026-07-30.csv"
+    fallback.write_text("not,a,valid,mnzl,csv\n", encoding="utf-8")
+
+    class Direct:
+        def get_text(self, url):
+            if url.endswith("/"):
+                return ('Holdings as of 2026-07-31 '
+                        '<a href="/wp-content/download">Download holdings</a>')
+            return "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n"
+
+    assert MnzlAcquirer(Direct(), None).acquire(fallback_export=fallback)[2].endswith(
+        "2026-07-31.csv")
 
 
 @pytest.mark.parametrize("href", [

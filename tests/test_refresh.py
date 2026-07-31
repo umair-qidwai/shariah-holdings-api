@@ -115,6 +115,25 @@ def test_rejects_bad_schema_stale_date_weight_total_and_duplicates():
             parse_standard_holdings("SPUS", candidate, "https://official.test/SPUS.csv", POLICY, NOW.date())
 
 
+def test_freshness_policy_is_per_fund_and_does_not_weaken_daily_funds(tmp_path):
+    policy = ValidationPolicy(max_age_days=7, max_age_days_by_fund={"MNZL": 120},
+                              minimum_holdings={"SPUS": 2, "HLAL": 2, "MNZL": 2},
+                              minimum_source_rows={"SPUS": 1, "HLAL": 1, "MNZL": 1},
+                              maximum_malformed_rate=Decimal("1"))
+    old_mnzl = tmp_path / "mnzl-official-holdings-2026-04-02.csv"
+    old_mnzl.write_text(text("mnzl-official-holdings-2026-07-31.csv"), encoding="utf-8")
+    assert parse_mnzl_holdings(old_mnzl, "https://manzilfunds.com/", policy, NOW.date()).holdings_date == date(2026, 4, 2)
+
+    stale_spus = text("SPUS.csv").replace("07/31/2026", "07/23/2026")
+    with pytest.raises(ValueError, match="8 days old"):
+        parse_standard_holdings("SPUS", stale_spus, "https://official.test/SPUS.csv", policy, NOW.date())
+
+    too_old_mnzl = tmp_path / "mnzl-official-holdings-2026-04-01.csv"
+    too_old_mnzl.write_text(text("mnzl-official-holdings-2026-07-31.csv"), encoding="utf-8")
+    with pytest.raises(ValueError, match="121 days old"):
+        parse_mnzl_holdings(too_old_mnzl, "https://manzilfunds.com/", policy, NOW.date())
+
+
 def test_positive_weight_malformed_identifier_is_rejected_as_schema_corruption():
     raw = text("SPUS.csv").replace("MSFT,594918104", "BAD TICKER,594918104")
     one_ok = ValidationPolicy(max_age_days=7, minimum_holdings={"SPUS": 1},

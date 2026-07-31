@@ -27,6 +27,7 @@ MNZL_FILENAME_RE = re.compile(r"^mnzl-official-holdings-(\d{4}-\d{2}-\d{2})\.csv
 @dataclass(frozen=True)
 class ValidationPolicy:
     max_age_days: int = 7
+    max_age_days_by_fund: Mapping[str, int] = field(default_factory=lambda: {"MNZL": 120})
     minimum_holdings: Mapping[str, int] = field(default_factory=lambda: {"SPUS": 150, "HLAL": 150, "MNZL": 200})
     minimum_source_rows: Mapping[str, int] = field(
         default_factory=lambda: {"SPUS": 200, "HLAL": 200, "MNZL": 480})
@@ -39,6 +40,9 @@ class ValidationPolicy:
     def __post_init__(self) -> None:
         if self.max_age_days < 0:
             raise ValueError("max_age_days must be non-negative")
+        if any(fund not in {"SPUS", "HLAL", "MNZL"} or value < 0
+               for fund, value in self.max_age_days_by_fund.items()):
+            raise ValueError("max_age_days_by_fund must contain known funds and non-negative values")
         if any(value < 0 for value in self.maximum_malformed_rows.values()):
             raise ValueError("maximum_malformed_rows values must be non-negative")
         if not Decimal("0") <= self.maximum_malformed_rate <= Decimal("1"):
@@ -60,7 +64,8 @@ def _validate_date(fund: str, value: date, policy: ValidationPolicy, today: date
     age = (today - value).days
     if age < 0:
         raise ValueError(f"{fund}: holdings date {value} is in the future")
-    if age > policy.max_age_days:
+    max_age_days = policy.max_age_days_by_fund.get(fund, policy.max_age_days)
+    if age > max_age_days:
         raise ValueError(f"{fund}: holdings date {value} is {age} days old")
 
 

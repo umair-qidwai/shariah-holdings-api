@@ -125,16 +125,14 @@ class MnzlAcquirer:
         self.browser_fetch = browser_fetch
 
     def acquire(self, local_export: Path | None = None,
-                as_of_date: date | None = None) -> tuple[str, str, str]:
+                as_of_date: date | None = None,
+                fallback_export: Path | None = None) -> tuple[str, str, str]:
+        if local_export is not None and fallback_export is not None:
+            raise ValueError("local_export and fallback_export are mutually exclusive")
         if local_export is not None:
-            if not MNZL_LOCAL_RE.fullmatch(local_export.name):
-                raise ValueError("MNZL local export must be named mnzl-official-holdings-YYYY-MM-DD.csv")
-            filename_date = date.fromisoformat(local_export.name[-14:-4])
-            _verified_date(as_of_date, filename_date)
-            text = _validate_mnzl_csv(local_export.read_text(encoding="utf-8-sig"))
-            return text, MNZL_PAGE_URL, local_export.name
+            return self._read_local_export(local_export, as_of_date)
 
-        direct_error: Exception | None = None
+        live_error: Exception | None = None
         if self.downloader is not None:
             try:
                 page = self.downloader.get_text(MNZL_PAGE_URL)
@@ -150,19 +148,37 @@ class MnzlAcquirer:
             except DateConflictError:
                 raise
             except Exception as exc:  # isolated browser fallback boundary
-                direct_error = exc
+                live_error = exc
         if self.browser_fetch is not None:
-            result = self.browser_fetch(MNZL_PAGE_URL)
-            text, _suggested = result[:2]
-            browser_date = result[2] if len(result) == 3 else None
-            text = _validate_mnzl_csv(text)
-            verified_date = _verified_date(as_of_date, browser_date)
-            if verified_date is None:
-                raise RuntimeError("MNZL browser holdings as-of date is unverified; supply --mnzl-as-of")
-            return text, MNZL_PAGE_URL, _filename(verified_date)
+            try:
+                result = self.browser_fetch(MNZL_PAGE_URL)
+                text, _suggested = result[:2]
+                browser_date = result[2] if len(result) == 3 else None
+                text = _validate_mnzl_csv(text)
+                verified_date = _verified_date(as_of_date, browser_date)
+                if verified_date is None:
+                    raise RuntimeError("MNZL browser holdings as-of date is unverified; supply --mnzl-as-of")
+                return text, MNZL_PAGE_URL, _filename(verified_date)
+            except DateConflictError:
+                raise
+            except Exception as exc:
+                live_error = exc
+        if fallback_export is not None:
+            # The staged export carries its own issuer date in its required name.
+            # Never relabel it with a caller assertion intended for a live export.
+            return self._read_local_export(fallback_export, None)
         raise RuntimeError(
             "MNZL acquisition failed; provide a dated local export or browser fallback: "
-            f"{direct_error}") from direct_error
+            f"{live_error}") from live_error
+
+    @staticmethod
+    def _read_local_export(local_export: Path, as_of_date: date | None) -> tuple[str, str, str]:
+        if not MNZL_LOCAL_RE.fullmatch(local_export.name):
+            raise ValueError("MNZL local export must be named mnzl-official-holdings-YYYY-MM-DD.csv")
+        filename_date = date.fromisoformat(local_export.name[-14:-4])
+        _verified_date(as_of_date, filename_date)
+        text = _validate_mnzl_csv(local_export.read_text(encoding="utf-8-sig"))
+        return text, MNZL_PAGE_URL, local_export.name
 
 
 def playwright_mnzl_download(url: str) -> tuple[str, str, date | None]:
