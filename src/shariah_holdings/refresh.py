@@ -32,10 +32,17 @@ class ValidationPolicy:
         default_factory=lambda: {"SPUS": 200, "HLAL": 200, "MNZL": 480})
     minimum_total_weight: Decimal = Decimal("98")
     maximum_total_weight: Decimal = Decimal("102")
+    maximum_malformed_rows: Mapping[str, int] = field(
+        default_factory=lambda: {"SPUS": 0, "HLAL": 0, "MNZL": 2})
+    maximum_malformed_rate: Decimal = Decimal("0.01")
 
     def __post_init__(self) -> None:
         if self.max_age_days < 0:
             raise ValueError("max_age_days must be non-negative")
+        if any(value < 0 for value in self.maximum_malformed_rows.values()):
+            raise ValueError("maximum_malformed_rows values must be non-negative")
+        if not Decimal("0") <= self.maximum_malformed_rate <= Decimal("1"):
+            raise ValueError("maximum_malformed_rate must be between zero and one")
 
 
 def _decimal(value: str | None, field_name: str) -> Decimal:
@@ -59,12 +66,18 @@ def _validate_date(fund: str, value: date, policy: ValidationPolicy, today: date
 
 def _rows(raw_csv: str, required: set[str], fund: str) -> list[dict[str, str]]:
     reader = csv.DictReader(io.StringIO(raw_csv.lstrip("\ufeff")))
-    missing = required - set(reader.fieldnames or ())
+    fieldnames = reader.fieldnames or []
+    duplicates = sorted({name for name in fieldnames if fieldnames.count(name) > 1})
+    if duplicates:
+        raise ValueError(f"{fund}: duplicate column(s): {', '.join(duplicates)}")
+    missing = required - set(fieldnames)
     if missing:
         raise ValueError(f"{fund}: missing columns: {', '.join(sorted(missing))}")
     rows = list(reader)
     if not rows:
         raise ValueError(f"{fund}: no data rows")
+    if any(None in row for row in rows):
+        raise ValueError(f"{fund}: row contains surplus field(s)")
     return rows
 
 
@@ -80,6 +93,17 @@ def _validate_source_count(fund: str, count: int, policy: ValidationPolicy) -> N
     minimum = policy.minimum_source_rows.get(fund, 1)
     if count < minimum:
         raise ValueError(f"{fund}: only {count} source rows; expected at least {minimum}")
+
+
+def _validate_malformed_exclusions(fund: str, exclusions: Sequence[Exclusion],
+                                   total_rows: int, policy: ValidationPolicy) -> None:
+    malformed = sum(item.reason == "malformed_identifier" for item in exclusions)
+    maximum = policy.maximum_malformed_rows.get(fund, 0)
+    if malformed > maximum:
+        raise ValueError(f"{fund}: malformed row budget exceeded: {malformed} > {maximum}")
+    rate = Decimal(malformed) / Decimal(total_rows)
+    if rate > policy.maximum_malformed_rate:
+        raise ValueError(f"{fund}: malformed row rate {rate:.2%} exceeds permitted rate")
 
 
 def _mnzl_shares(value: str | None) -> Decimal:
@@ -122,12 +146,13 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
         if money_market or symbol in {"CASH", "CASH&OTHER"}:
             exclusions.append(Exclusion(row_number, symbol, "cash_or_money_market"))
             continue
-        if market_value <= 0 or shares <= 0:
-            reason = "malformed_identifier" if not TICKER_RE.fullmatch(symbol) else "zero_value_residual"
-            exclusions.append(Exclusion(row_number, symbol, reason))
-            continue
         if not TICKER_RE.fullmatch(symbol):
+            if weight > 0:
+                raise ValueError(f"{fund}: positive-weight malformed identifier {symbol!r}")
             exclusions.append(Exclusion(row_number, symbol, "malformed_identifier"))
+            continue
+        if market_value <= 0 or shares <= 0:
+            exclusions.append(Exclusion(row_number, symbol, "zero_value_residual"))
             continue
         if symbol in seen:
             raise ValueError(f"{fund}: duplicate ticker {symbol}")
@@ -140,6 +165,7 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
             holdings_date=holdings_date, source_url=source_url,
         ))
     _validate_source_count(fund, len(rows), policy)
+    _validate_malformed_exclusions(fund, exclusions, len(rows), policy)
     _validate_total_and_count(fund, total_weight, len(holdings), policy)
     return FundData(fund, holdings_date, tuple(sorted(holdings, key=lambda h: h.symbol)), raw_csv,
                     source_url, len(rows), total_weight, tuple(exclusions))
@@ -167,6 +193,8 @@ def parse_mnzl_text(raw_csv: str, filename: str, source_url: str,
             exclusions.append(Exclusion(row_number, symbol, "cash_or_money_market"))
             continue
         if not TICKER_RE.fullmatch(symbol) or not CUSIP_RE.fullmatch(cusip):
+            if weight > 0:
+                raise ValueError(f"MNZL: positive-weight malformed identifier {symbol!r}")
             exclusions.append(Exclusion(row_number, symbol, "malformed_identifier"))
             continue
         if shares <= 0:
@@ -181,6 +209,7 @@ def parse_mnzl_text(raw_csv: str, filename: str, source_url: str,
             holdings_date=holdings_date, source_url=source_url,
         ))
     _validate_source_count("MNZL", len(rows), policy)
+    _validate_malformed_exclusions("MNZL", exclusions, len(rows), policy)
     _validate_total_and_count("MNZL", total_weight, len(holdings), policy)
     return FundData("MNZL", holdings_date, tuple(sorted(holdings, key=lambda h: h.symbol)),
                     raw_csv, source_url, len(rows), total_weight, tuple(exclusions))
@@ -199,8 +228,13 @@ def _csv(fieldnames: Sequence[str], rows: Iterable[Mapping[str, str]]) -> str:
     output = io.StringIO(newline="")
     writer = csv.DictWriter(output, fieldnames=fieldnames, lineterminator="\n")
     writer.writeheader()
-    writer.writerows(rows)
+    writer.writerows({key: _spreadsheet_safe(value) for key, value in row.items()} for row in rows)
     return output.getvalue()
+
+
+def _spreadsheet_safe(value: str) -> str:
+    """Neutralize formula-like CSV cells without changing normalized models."""
+    return "'" + value if value.startswith(("=", "+", "-", "@")) else value
 
 
 def _timestamp(value: datetime) -> str:
@@ -317,6 +351,22 @@ def _publish_atomically(outputs: Mapping[str, str], output_dir: Path) -> None:
                 # already-published directory, depending on the filesystem.
                 if exc.errno not in {errno.EEXIST, errno.ENOTEMPTY} or not generation.is_dir():
                     raise
+        # Convenience files are non-authoritative, but all of their fallible
+        # writes happen before committing the authoritative generation pointer.
+        for name, content in outputs.items():
+            descriptor, temporary_name = tempfile.mkstemp(
+                prefix=f".{name}-", suffix=".tmp", dir=output_dir)
+            temporary = Path(temporary_name)
+            try:
+                with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as handle:
+                    handle.write(content)
+                    handle.flush()
+                    os.fsync(handle.fileno())
+                os.replace(temporary, output_dir / name)
+            finally:
+                temporary.unlink(missing_ok=True)
+        _fsync_directory(output_dir)
+
         manifest = {"generation": generation_id, "path": f"generations/{generation_id}",
                     "files": sorted(outputs)}
         descriptor, temporary_name = tempfile.mkstemp(
@@ -327,23 +377,11 @@ def _publish_atomically(outputs: Mapping[str, str], output_dir: Path) -> None:
                 handle.write(json.dumps(manifest, sort_keys=True) + "\n")
                 handle.flush()
                 os.fsync(handle.fileno())
+            # Commit point: no fallible publication work follows this swap.
             os.replace(pointer, output_dir / "current.json")
-            _fsync_directory(output_dir)
-        finally:
+        except Exception:
             pointer.unlink(missing_ok=True)
-
-        # Convenience files are explicitly non-authoritative; readers requiring
-        # a coherent snapshot must use load_current_outputs/current.json.
-        for name, content in outputs.items():
-            descriptor, temporary_name = tempfile.mkstemp(
-                prefix=f".{name}-", suffix=".tmp", dir=output_dir)
-            temporary = Path(temporary_name)
-            try:
-                with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as handle:
-                    handle.write(content)
-                os.replace(temporary, output_dir / name)
-            finally:
-                temporary.unlink(missing_ok=True)
+            raise
     finally:
         shutil.rmtree(staging, ignore_errors=True)
 

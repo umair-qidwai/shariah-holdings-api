@@ -60,6 +60,59 @@ def test_mnzl_discovers_content_download_and_requires_verified_as_of_date():
     assert MnzlAcquirer(Blocked(), browser).acquire(as_of_date=date(2026, 7, 31))[2].endswith("2026-07-31.csv")
 
 
+def test_mnzl_caller_date_must_match_direct_and_browser_issuer_dates():
+    class Direct:
+        def get_text(self, url):
+            if url.endswith("/"):
+                return ('Holdings as of 2026-07-31 '
+                        '<a href="/wp-content/download">Download holdings</a>')
+            return "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n"
+
+    browser_called = False
+
+    def browser(url):
+        nonlocal browser_called
+        browser_called = True
+        return ("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", "holdings.csv", date(2026, 7, 31))
+
+    with pytest.raises(ValueError, match="conflicts with issuer"):
+        MnzlAcquirer(Direct(), browser).acquire(as_of_date=date(2026, 7, 30))
+    assert not browser_called
+
+    class Blocked:
+        def get_text(self, url):
+            raise RuntimeError("blocked")
+
+    with pytest.raises(ValueError, match="conflicts with issuer"):
+        MnzlAcquirer(Blocked(), browser).acquire(as_of_date=date(2026, 7, 30))
+
+
+def test_mnzl_local_filename_date_must_match_supplied_date(tmp_path):
+    export = tmp_path / "mnzl-official-holdings-2026-07-31.csv"
+    export.write_text("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="conflicts with issuer"):
+        MnzlAcquirer(None, None).acquire(export, as_of_date=date(2026, 7, 30))
+
+
+@pytest.mark.parametrize("href", [
+    "javascript:alert(1)", "ftp://manzilfunds.com/holdings.csv",
+    "http://127.0.0.1/holdings.csv", "https://evil.example/holdings.csv",
+])
+def test_mnzl_rejects_unsafe_or_non_issuer_discovered_urls(href):
+    class FakeDownloader:
+        def __init__(self):
+            self.seen = []
+
+        def get_text(self, url):
+            self.seen.append(url)
+            return f'Holdings as of 2026-07-31 <a href="{href}">Download holdings</a>'
+
+    downloader = FakeDownloader()
+    with pytest.raises(RuntimeError, match="no discoverable holdings download"):
+        MnzlAcquirer(downloader, None).acquire()
+    assert downloader.seen == ["https://manzilfunds.com/"]
+
+
 def test_mnzl_rejects_non_csv_content_even_when_download_link_exists():
     class FakeDownloader:
         def get_text(self, url):

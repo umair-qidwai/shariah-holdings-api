@@ -12,6 +12,13 @@ from .refresh import ValidationPolicy, refresh_to_directory
 from .sources import HttpDownloader, MnzlAcquirer, acquire_all_sources, playwright_mnzl_download
 
 
+def _nonnegative_int(value: str) -> int:
+    parsed = int(value)
+    if parsed < 0:
+        raise argparse.ArgumentTypeError("must be non-negative")
+    return parsed
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Refresh normalized SPUS, HLAL, and MNZL holdings files.")
     parser.add_argument("--output-dir", type=Path, default=Path("data"))
@@ -19,18 +26,18 @@ def main(argv: list[str] | None = None) -> int:
                         help="dated official export named mnzl-official-holdings-YYYY-MM-DD.csv")
     parser.add_argument("--mnzl-as-of", type=date.fromisoformat, metavar="YYYY-MM-DD",
                         help="caller-validated issuer as-of date for an otherwise undated live export")
-    parser.add_argument("--max-age-days", type=int, default=7)
+    parser.add_argument("--max-age-days", type=_nonnegative_int, default=7)
     parser.add_argument("--no-browser", action="store_true",
                         help="do not attempt Playwright if Manzil exposes no direct download")
     parser.add_argument("--dry-run", action="store_true", help="validate without replacing output files")
     args = parser.parse_args(argv)
+    policy = ValidationPolicy(max_age_days=args.max_age_days)
 
     downloader = HttpDownloader()
     browser = None if args.no_browser else playwright_mnzl_download
     mnzl = MnzlAcquirer(downloader, browser)
     sources = acquire_all_sources(
         downloader, lambda: mnzl.acquire(args.mnzl_csv, as_of_date=args.mnzl_as_of))
-    policy = ValidationPolicy(max_age_days=args.max_age_days)
     acquired_at = datetime.now(timezone.utc)
     if args.dry_run:
         with tempfile.TemporaryDirectory(prefix="shariah-refresh-") as temporary:

@@ -7,7 +7,7 @@ import time
 from datetime import date, datetime
 from pathlib import Path
 from typing import Callable
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 import httpx
 
@@ -22,6 +22,17 @@ MNZL_HEADER = "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS"
 
 def _filename(as_of_date: date) -> str:
     return f"mnzl-official-holdings-{as_of_date.isoformat()}.csv"
+
+
+class DateConflictError(ValueError):
+    """A caller assertion disagrees with an issuer-provided holdings date."""
+
+
+def _verified_date(caller_date: date | None, issuer_date: date | None) -> date | None:
+    if caller_date is not None and issuer_date is not None and caller_date != issuer_date:
+        raise DateConflictError(
+            f"caller as-of date {caller_date} conflicts with issuer date {issuer_date}")
+    return issuer_date if issuer_date is not None else caller_date
 
 
 def _extract_as_of_date(content: str) -> date | None:
@@ -42,17 +53,29 @@ def _extract_as_of_date(content: str) -> date | None:
     return None
 
 
+def _safe_mnzl_url(candidate: str) -> str | None:
+    url = urljoin(MNZL_PAGE_URL, candidate.replace("&amp;", "&"))
+    parsed = urlparse(url)
+    hostname = (parsed.hostname or "").lower()
+    if (parsed.scheme not in {"http", "https"}
+            or not (hostname == "manzilfunds.com" or hostname.endswith(".manzilfunds.com"))):
+        return None
+    return url
+
+
 def _discover_download_url(page: str) -> str | None:
     """Find literal CSV and WordPress/generated holdings controls."""
     for href, body in LINK_RE.findall(page):
         context = f"{href} {re.sub(r'<[^>]+>', ' ', body)}"
         if (".csv" in href.lower() or "wp-content" in href.lower()
                 or re.search(r"download|holding|portfolio", context, re.I)):
-            return urljoin(MNZL_PAGE_URL, href.replace("&amp;", "&"))
+            safe_url = _safe_mnzl_url(href)
+            if safe_url:
+                return safe_url
     # Some WordPress builders place the URL in JSON/data attributes, not anchors.
     embedded = re.search(
         r'''["']((?:https?://|/)[^"']*(?:wp-content|download)[^"']*)["']''', page, re.I)
-    return urljoin(MNZL_PAGE_URL, embedded.group(1)) if embedded else None
+    return _safe_mnzl_url(embedded.group(1)) if embedded else None
 
 
 def _validate_mnzl_csv(text: str) -> str:
@@ -106,6 +129,8 @@ class MnzlAcquirer:
         if local_export is not None:
             if not MNZL_LOCAL_RE.fullmatch(local_export.name):
                 raise ValueError("MNZL local export must be named mnzl-official-holdings-YYYY-MM-DD.csv")
+            filename_date = date.fromisoformat(local_export.name[-14:-4])
+            _verified_date(as_of_date, filename_date)
             text = _validate_mnzl_csv(local_export.read_text(encoding="utf-8-sig"))
             return text, MNZL_PAGE_URL, local_export.name
 
@@ -114,14 +139,16 @@ class MnzlAcquirer:
             try:
                 page = self.downloader.get_text(MNZL_PAGE_URL)
                 issuer_date = _extract_as_of_date(page)
+                verified_date = _verified_date(as_of_date, issuer_date)
                 url = _discover_download_url(page)
                 if not url:
                     raise RuntimeError("MNZL page exposed no discoverable holdings download")
                 text = _validate_mnzl_csv(self.downloader.get_text(url))
-                verified_date = as_of_date or issuer_date
                 if verified_date is None:
                     raise RuntimeError("MNZL holdings as-of date is unverified; supply --mnzl-as-of")
                 return text, url, _filename(verified_date)
+            except DateConflictError:
+                raise
             except Exception as exc:  # isolated browser fallback boundary
                 direct_error = exc
         if self.browser_fetch is not None:
@@ -129,7 +156,7 @@ class MnzlAcquirer:
             text, _suggested = result[:2]
             browser_date = result[2] if len(result) == 3 else None
             text = _validate_mnzl_csv(text)
-            verified_date = as_of_date or browser_date
+            verified_date = _verified_date(as_of_date, browser_date)
             if verified_date is None:
                 raise RuntimeError("MNZL browser holdings as-of date is unverified; supply --mnzl-as-of")
             return text, MNZL_PAGE_URL, _filename(verified_date)

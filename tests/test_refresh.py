@@ -2,7 +2,9 @@ import csv
 import io
 import json
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import replace
 from datetime import date, datetime, timezone
+from decimal import Decimal
 from pathlib import Path
 
 import pytest
@@ -14,7 +16,8 @@ from shariah_holdings.refresh import (ValidationPolicy, build_outputs, load_curr
 FIXTURES = Path(__file__).parent / "fixtures"
 NOW = datetime(2026, 7, 31, 18, tzinfo=timezone.utc)
 POLICY = ValidationPolicy(max_age_days=7, minimum_holdings={"SPUS": 2, "HLAL": 2, "MNZL": 2},
-                          minimum_source_rows={"SPUS": 1, "HLAL": 1, "MNZL": 1})
+                          minimum_source_rows={"SPUS": 1, "HLAL": 1, "MNZL": 1},
+                          maximum_malformed_rate=Decimal("1"))
 
 
 def text(name):
@@ -112,13 +115,30 @@ def test_rejects_bad_schema_stale_date_weight_total_and_duplicates():
             parse_standard_holdings("SPUS", candidate, "https://official.test/SPUS.csv", POLICY, NOW.date())
 
 
-def test_malformed_positive_identifier_is_an_explicit_exclusion():
+def test_positive_weight_malformed_identifier_is_rejected_as_schema_corruption():
     raw = text("SPUS.csv").replace("MSFT,594918104", "BAD TICKER,594918104")
     one_ok = ValidationPolicy(max_age_days=7, minimum_holdings={"SPUS": 1},
                               minimum_source_rows={"SPUS": 1})
-    fund = parse_standard_holdings("SPUS", raw, "https://official.test/SPUS.csv", one_ok, NOW.date())
-    assert [(item.symbol, item.reason) for item in fund.exclusions if item.symbol == "BAD TICKER"] == [
-        ("BAD TICKER", "malformed_identifier")]
+    with pytest.raises(ValueError, match="positive-weight malformed"):
+        parse_standard_holdings("SPUS", raw, "https://official.test/SPUS.csv", one_ok, NOW.date())
+
+
+def test_malformed_exclusions_are_bounded_by_explicit_count_and_rate_budgets(tmp_path):
+    path = tmp_path / "mnzl-official-holdings-2026-07-31.csv"
+    raw = text(path.name).replace(
+        "ZERO,Zero Residual,,0,0.00",
+        "BAD ONE,Residual One,,0,0.00\nBAD TWO,Residual Two,,0,0.00",
+    )
+    path.write_text(raw, encoding="utf-8")
+    count_policy = replace(POLICY, maximum_malformed_rows={"MNZL": 1},
+                           maximum_malformed_rate=Decimal("1"))
+    with pytest.raises(ValueError, match="malformed row budget"):
+        parse_mnzl_holdings(path, "https://manzilfunds.com/", count_policy, NOW.date())
+
+    rate_policy = replace(POLICY, maximum_malformed_rows={"MNZL": 10},
+                          maximum_malformed_rate=Decimal("0.20"))
+    with pytest.raises(ValueError, match="malformed row rate"):
+        parse_mnzl_holdings(path, "https://manzilfunds.com/", rate_policy, NOW.date())
 
 
 def test_build_outputs_is_deterministic_exact_union_and_has_one_detail_row_per_fund_ticker(tmp_path):
@@ -141,6 +161,39 @@ def test_build_outputs_is_deterministic_exact_union_and_has_one_detail_row_per_f
     assert set(detail[0]) == {"fund", "symbol", "name", "cusip", "weight", "shares",
                               "market_value", "holdings_date", "source_url"}
     assert outputs == build_outputs(reversed(funds), NOW)
+
+
+def test_downloadable_csv_neutralizes_formula_injection_without_mutating_models(tmp_path):
+    mnzl = tmp_path / "mnzl-official-holdings-2026-07-31.csv"
+    mnzl.write_text(text(mnzl.name), encoding="utf-8")
+    funds = [
+        parse_standard_holdings("HLAL", text("HLAL.csv"), "https://official.test/HLAL.csv", POLICY, NOW.date()),
+        parse_mnzl_holdings(mnzl, "https://manzilfunds.com/", POLICY, NOW.date()),
+        parse_standard_holdings("SPUS", text("SPUS.csv"), "https://official.test/SPUS.csv", POLICY, NOW.date()),
+    ]
+    prefixes = ["=", "+", "-", "@"]
+    changed = []
+    for fund in funds:
+        holdings = tuple(replace(holding, name=prefixes.pop(0) + holding.name)
+                         if prefixes else holding for holding in fund.holdings)
+        changed.append(replace(fund, holdings=holdings))
+
+    original_names = [holding.name for fund in changed for holding in fund.holdings]
+    outputs = build_outputs(changed, NOW)
+    csv_names = [row["name"] for row in csv.DictReader(io.StringIO(outputs["holdings.csv"]))]
+    assert original_names[:4] == ["=Apple Incorporated", "+Tesla Inc", "-Apple Inc", "@Broadcom Inc"]
+    assert csv_names[:4] == ["'=Apple Incorporated", "'+Tesla Inc", "'-Apple Inc", "'@Broadcom Inc"]
+    assert [holding.name for fund in changed for holding in fund.holdings] == original_names
+
+
+def test_csv_reader_rejects_duplicate_headers_and_surplus_row_fields():
+    raw = text("SPUS.csv")
+    duplicate_header = raw.replace("SecurityName,Shares", "SecurityName,SecurityName")
+    with pytest.raises(ValueError, match="duplicate column"):
+        parse_standard_holdings("SPUS", duplicate_header, "https://official.test/SPUS.csv", POLICY, NOW.date())
+    surplus_field = raw.replace("07/31/2026,SPUS,AAPL", "07/31/2026,SPUS,AAPL,SURPLUS")
+    with pytest.raises(ValueError, match="surplus field"):
+        parse_standard_holdings("SPUS", surplus_field, "https://official.test/SPUS.csv", POLICY, NOW.date())
 
 
 def test_refresh_validates_every_source_before_atomic_output_replacement(tmp_path):
@@ -190,6 +243,51 @@ def test_authoritative_manifest_switch_exposes_one_immutable_generation(tmp_path
     generation = tmp_path / manifest["path"]
     assert generation.is_dir()
     assert set(p.name for p in generation.iterdir()) == {"allowlist.csv", "holdings.csv", "metadata.json"}
+
+
+def test_convenience_output_failure_is_precommit_and_preserves_previous_pointer(tmp_path, monkeypatch):
+    good = {
+        "SPUS": (text("SPUS.csv"), "https://official.test/SPUS.csv"),
+        "HLAL": (text("HLAL.csv"), "https://official.test/HLAL.csv"),
+        "MNZL": (text("mnzl-official-holdings-2026-07-31.csv"), "https://manzilfunds.com/",
+                 "mnzl-official-holdings-2026-07-31.csv"),
+    }
+    refresh_to_directory(good, tmp_path, POLICY, NOW)
+    pointer_before = (tmp_path / "current.json").read_bytes()
+    current_before = load_current_outputs(tmp_path)
+    original_replace = __import__("os").replace
+
+    def fail_convenience(source, target):
+        if Path(target).name == "holdings.csv":
+            raise OSError("injected convenience failure")
+        return original_replace(source, target)
+
+    changed = dict(good)
+    changed["SPUS"] = (good["SPUS"][0].replace("Apple Inc", "Apple Incorporated"), good["SPUS"][1])
+    monkeypatch.setattr("shariah_holdings.refresh.os.replace", fail_convenience)
+    with pytest.raises(OSError, match="convenience failure"):
+        refresh_to_directory(changed, tmp_path, POLICY, NOW.replace(hour=19))
+    assert (tmp_path / "current.json").read_bytes() == pointer_before
+    assert load_current_outputs(tmp_path) == current_before
+
+
+def test_current_pointer_swap_is_the_last_replace_operation(tmp_path, monkeypatch):
+    good = {
+        "SPUS": (text("SPUS.csv"), "https://official.test/SPUS.csv"),
+        "HLAL": (text("HLAL.csv"), "https://official.test/HLAL.csv"),
+        "MNZL": (text("mnzl-official-holdings-2026-07-31.csv"), "https://manzilfunds.com/",
+                 "mnzl-official-holdings-2026-07-31.csv"),
+    }
+    replaced = []
+    original_replace = __import__("os").replace
+
+    def record_replace(source, target):
+        replaced.append(Path(target).name)
+        return original_replace(source, target)
+
+    monkeypatch.setattr("shariah_holdings.refresh.os.replace", record_replace)
+    refresh_to_directory(good, tmp_path, POLICY, NOW)
+    assert replaced[-1] == "current.json"
 
 
 def test_concurrent_generations_are_each_complete_and_pointer_is_coherent(tmp_path):
