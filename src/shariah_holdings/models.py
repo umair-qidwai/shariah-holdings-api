@@ -76,6 +76,22 @@ class Holding:
 
 
 @dataclass(frozen=True)
+class Exclusion:
+    """A source row deliberately omitted under a small, auditable allowlist."""
+
+    row_number: int
+    symbol: str
+    reason: str
+
+    def __post_init__(self) -> None:
+        if self.row_number < 2:
+            raise ValueError("source row number must include the CSV header offset")
+        object.__setattr__(self, "symbol", str(self.symbol).strip().upper())
+        if self.reason not in {"cash_or_money_market", "zero_value_residual", "malformed_identifier"}:
+            raise ValueError(f"unsupported exclusion reason {self.reason!r}")
+
+
+@dataclass(frozen=True)
 class FundData:
     fund: str
     holdings_date: date
@@ -84,6 +100,7 @@ class FundData:
     source_url: str = "https://example.invalid/"
     total_rows: int = 0
     total_weight: Decimal = Decimal("0")
+    exclusions: tuple[Exclusion, ...] = ()
 
     def __post_init__(self) -> None:
         fund = _text(self.fund, "fund").upper()
@@ -97,6 +114,11 @@ class FundData:
             raise ValueError(f"{fund}: mixed holdings dates")
         object.__setattr__(self, "fund", fund)
         object.__setattr__(self, "holdings", holdings)
+        exclusions = tuple(self.exclusions)
+        if self.total_rows != len(holdings) + len(exclusions):
+            raise ValueError(f"{fund}: unexplained row loss: {self.total_rows} source rows != "
+                             f"{len(holdings)} accepted + {len(exclusions)} excluded")
+        object.__setattr__(self, "exclusions", exclusions)
 
 
 @dataclass(frozen=True)

@@ -1,10 +1,12 @@
+from datetime import date
 from pathlib import Path
 
 import httpx
 import pytest
 
 from shariah_holdings.sources import (HLAL_CSV_URL, SPUS_CSV_URL, HttpDownloader,
-                                      MnzlAcquirer, acquire_all_sources)
+                                      MnzlAcquirer, acquire_all_sources,
+                                      playwright_mnzl_download)
 
 
 def test_http_downloader_retries_transient_failures_without_accepting_empty_body():
@@ -38,20 +40,52 @@ def test_mnzl_prefers_explicit_dated_official_export(tmp_path):
     assert source[0].startswith("TICKER") and source[2] == export.name
 
 
-def test_mnzl_extracts_csv_link_then_uses_injected_browser_fallback():
+def test_mnzl_discovers_content_download_and_requires_verified_as_of_date():
     pages = {
-        "https://manzilfunds.com/": '<a href="https://cdn.test/mnzl.csv">Download CSV</a>',
-        "https://cdn.test/mnzl.csv": "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n",
+        "https://manzilfunds.com/": ('<time>Holdings as of July 31, 2026</time>'
+                                     '<a data-download-holdings href="/wp-content/uploads/export?id=7">Download</a>'),
+        "https://manzilfunds.com/wp-content/uploads/export?id=7":
+            "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n",
     }
     class FakeDownloader:
         def get_text(self, url): return pages[url]
     direct = MnzlAcquirer(FakeDownloader(), None).acquire()
-    assert direct[1] == "https://cdn.test/mnzl.csv"
-    assert direct[2].startswith("mnzl-official-holdings-")
-    browser = lambda url: ("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", "holdings.csv")
+    assert direct[1].endswith("/wp-content/uploads/export?id=7")
+    assert direct[2] == "mnzl-official-holdings-2026-07-31.csv"
+    browser = lambda url: ("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n", "holdings.csv", None)
     class Blocked:
         def get_text(self, url): raise RuntimeError("cloudflare")
-    assert MnzlAcquirer(Blocked(), browser).acquire()[2].startswith("mnzl-official-holdings-")
+    with pytest.raises(RuntimeError, match="as-of date"):
+        MnzlAcquirer(Blocked(), browser).acquire()
+    assert MnzlAcquirer(Blocked(), browser).acquire(as_of_date=date(2026, 7, 31))[2].endswith("2026-07-31.csv")
+
+
+def test_mnzl_rejects_non_csv_content_even_when_download_link_exists():
+    class FakeDownloader:
+        def get_text(self, url):
+            return ('Holdings as of 2026-07-31 <a href="/wp-content/download">Download holdings</a>'
+                    if url.endswith("/") else "<!doctype html>blocked")
+    with pytest.raises(RuntimeError, match="CSV header"):
+        MnzlAcquirer(FakeDownloader(), None).acquire()
+
+
+def test_playwright_blob_download_from_representative_local_page(tmp_path):
+    pytest.importorskip("playwright.sync_api")
+    page = tmp_path / "mnzl.html"
+    page.write_text('''<!doctype html><button data-download-holdings aria-label="Download holdings CSV">Download</button>
+<script>document.querySelector('[data-download-holdings]').onclick=()=>{
+const csv='TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\\nAVGO,Broadcom Inc,11135F101,3.997,100\\n';
+const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+a.download='MNZL Fund Holdings.csv'; a.click();};</script>''', encoding="utf-8")
+    try:
+        csv_text, filename, as_of = playwright_mnzl_download(page.as_uri())
+    except Exception as exc:
+        if "Executable doesn't exist" in str(exc):
+            pytest.skip("Playwright Chromium is not installed")
+        raise
+    assert filename == "MNZL Fund Holdings.csv"
+    assert csv_text.startswith("TICKER,NAME,CUSIP,SHARES,% of NET ASSETS\n")
+    assert as_of is None
 
 
 def test_acquire_all_uses_official_direct_urls_and_injected_mnzl():

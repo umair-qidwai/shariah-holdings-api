@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import csv
+import errno
+import hashlib
 import io
 import json
 import os
@@ -15,7 +17,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
-from .models import CUSIP_RE, FundData, Holding, TICKER_RE
+from .models import CUSIP_RE, Exclusion, FundData, Holding, TICKER_RE
 
 STANDARD_COLUMNS = {"Date", "Account", "StockTicker", "SecurityName", "Shares", "MarketValue", "Weightings"}
 MNZL_COLUMNS = {"TICKER", "NAME", "CUSIP", "SHARES", "% of NET ASSETS"}
@@ -26,6 +28,8 @@ MNZL_FILENAME_RE = re.compile(r"^mnzl-official-holdings-(\d{4}-\d{2}-\d{2})\.csv
 class ValidationPolicy:
     max_age_days: int = 7
     minimum_holdings: Mapping[str, int] = field(default_factory=lambda: {"SPUS": 150, "HLAL": 150, "MNZL": 200})
+    minimum_source_rows: Mapping[str, int] = field(
+        default_factory=lambda: {"SPUS": 200, "HLAL": 200, "MNZL": 480})
     minimum_total_weight: Decimal = Decimal("98")
     maximum_total_weight: Decimal = Decimal("102")
 
@@ -72,6 +76,20 @@ def _validate_total_and_count(fund: str, total: Decimal, count: int, policy: Val
         raise ValueError(f"{fund}: only {count} valid equity holdings; expected at least {minimum}")
 
 
+def _validate_source_count(fund: str, count: int, policy: ValidationPolicy) -> None:
+    minimum = policy.minimum_source_rows.get(fund, 1)
+    if count < minimum:
+        raise ValueError(f"{fund}: only {count} source rows; expected at least {minimum}")
+
+
+def _mnzl_shares(value: str | None) -> Decimal:
+    """Parse MNZL integral shares, whose periods are grouping separators."""
+    raw = (value or "").strip()
+    if not re.fullmatch(r"\d{1,3}(?:\.\d{3})*|\d+", raw):
+        raise ValueError(f"invalid shares: {value!r}")
+    return _decimal(raw.replace(".", ""), "shares")
+
+
 def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
                             policy: ValidationPolicy, today: date | None = None) -> FundData:
     fund = fund.strip().upper()
@@ -90,17 +108,27 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
         raise ValueError(f"{fund}: invalid holdings date") from exc
     _validate_date(fund, holdings_date, policy, today or date.today())
 
-    total_weight = sum((_decimal(row.get("Weightings"), "weight") for row in rows), Decimal())
+    # Parse every numeric field first, including rows that may later be excluded.
+    parsed = [(_decimal(row.get("Weightings"), "weight"),
+               _decimal(row.get("Shares"), "shares"),
+               _decimal(row.get("MarketValue"), "market value")) for row in rows]
+    total_weight = sum((values[0] for values in parsed), Decimal())
     holdings: list[Holding] = []
+    exclusions: list[Exclusion] = []
     seen: set[str] = set()
-    for row in rows:
+    for row_number, (row, (weight, shares, market_value)) in enumerate(zip(rows, parsed), 2):
         symbol = (row.get("StockTicker") or "").strip().upper()
-        market_value = _decimal(row.get("MarketValue"), "market value")
         money_market = (row.get("MoneyMarketFlag") or "").strip().upper() == "Y"
-        if market_value <= 0 or money_market or symbol in {"CASH", "CASH&OTHER"}:
+        if money_market or symbol in {"CASH", "CASH&OTHER"}:
+            exclusions.append(Exclusion(row_number, symbol, "cash_or_money_market"))
+            continue
+        if market_value <= 0 or shares <= 0:
+            reason = "malformed_identifier" if not TICKER_RE.fullmatch(symbol) else "zero_value_residual"
+            exclusions.append(Exclusion(row_number, symbol, reason))
             continue
         if not TICKER_RE.fullmatch(symbol):
-            raise ValueError(f"{fund}: invalid positive-value ticker {symbol!r}")
+            exclusions.append(Exclusion(row_number, symbol, "malformed_identifier"))
+            continue
         if symbol in seen:
             raise ValueError(f"{fund}: duplicate ticker {symbol}")
         seen.add(symbol)
@@ -108,12 +136,13 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
         cusip = raw_cusip if CUSIP_RE.fullmatch(raw_cusip) else None
         holdings.append(Holding(
             fund=fund, symbol=symbol, name=row.get("SecurityName") or "", cusip=cusip,
-            weight=row.get("Weightings") or "", shares=row.get("Shares"),
-            market_value=row.get("MarketValue"), holdings_date=holdings_date, source_url=source_url,
+            weight=weight, shares=shares, market_value=market_value,
+            holdings_date=holdings_date, source_url=source_url,
         ))
+    _validate_source_count(fund, len(rows), policy)
     _validate_total_and_count(fund, total_weight, len(holdings), policy)
     return FundData(fund, holdings_date, tuple(sorted(holdings, key=lambda h: h.symbol)), raw_csv,
-                    source_url, len(rows), total_weight)
+                    source_url, len(rows), total_weight, tuple(exclusions))
 
 
 def parse_mnzl_text(raw_csv: str, filename: str, source_url: str,
@@ -124,30 +153,37 @@ def parse_mnzl_text(raw_csv: str, filename: str, source_url: str,
     holdings_date = date.fromisoformat(match.group(1))
     _validate_date("MNZL", holdings_date, policy, today or date.today())
     rows = _rows(raw_csv, MNZL_COLUMNS, "MNZL")
-    total_weight = sum((_decimal(row.get("% of NET ASSETS"), "weight") for row in rows), Decimal())
+    # Validate all numerics before classification or aggregate checks.
+    parsed = [(_decimal(row.get("% of NET ASSETS"), "weight"),
+               _mnzl_shares(row.get("SHARES"))) for row in rows]
+    total_weight = sum((values[0] for values in parsed), Decimal())
     holdings: list[Holding] = []
+    exclusions: list[Exclusion] = []
     seen: set[str] = set()
-    for row in rows:
+    for row_number, (row, (weight, shares)) in enumerate(zip(rows, parsed), 2):
         symbol = (row.get("TICKER") or "").strip().upper()
-        weight = _decimal(row.get("% of NET ASSETS"), "weight")
         cusip = (row.get("CUSIP") or "").strip().upper()
-        if symbol in {"CASH", "CASH&OTHER"} or weight <= 0:
+        if symbol in {"CASH", "CASH&OTHER"}:
+            exclusions.append(Exclusion(row_number, symbol, "cash_or_money_market"))
             continue
-        if not TICKER_RE.fullmatch(symbol):
-            raise ValueError(f"MNZL: invalid equity ticker {symbol!r}")
-        if not CUSIP_RE.fullmatch(cusip):
-            raise ValueError(f"MNZL: {symbol!r} has invalid CUSIP {cusip!r}")
+        if not TICKER_RE.fullmatch(symbol) or not CUSIP_RE.fullmatch(cusip):
+            exclusions.append(Exclusion(row_number, symbol, "malformed_identifier"))
+            continue
+        if shares <= 0:
+            exclusions.append(Exclusion(row_number, symbol, "zero_value_residual"))
+            continue
         if symbol in seen:
             raise ValueError(f"MNZL: duplicate ticker {symbol}")
         seen.add(symbol)
         holdings.append(Holding(
             fund="MNZL", symbol=symbol, name=row.get("NAME") or "", cusip=cusip,
-            weight=row.get("% of NET ASSETS") or "", shares=row.get("SHARES"),
-            market_value=None, holdings_date=holdings_date, source_url=source_url,
+            weight=weight, shares=shares, market_value=None,
+            holdings_date=holdings_date, source_url=source_url,
         ))
+    _validate_source_count("MNZL", len(rows), policy)
     _validate_total_and_count("MNZL", total_weight, len(holdings), policy)
     return FundData("MNZL", holdings_date, tuple(sorted(holdings, key=lambda h: h.symbol)),
-                    raw_csv, source_url, len(rows), total_weight)
+                    raw_csv, source_url, len(rows), total_weight, tuple(exclusions))
 
 
 def parse_mnzl_holdings(path: Path, source_url: str, policy: ValidationPolicy,
@@ -200,8 +236,16 @@ def build_outputs(funds: Iterable[FundData], checked_at: datetime) -> dict[str, 
                           "checked_at": stamp})
     metadata = {
         "checked_at": stamp,
+        "acquired_at": stamp,
         "funds": [{"fund": fund.fund, "holdings_date": fund.holdings_date.isoformat(),
-                   "holding_count": len(fund.holdings), "source_url": fund.source_url}
+                   "holding_count": len(fund.holdings),
+                   "source_row_count": fund.total_rows,
+                   "excluded_row_count": len(fund.exclusions),
+                   "exclusions": [
+                       {"row_number": item.row_number, "symbol": item.symbol, "reason": item.reason}
+                       for item in fund.exclusions
+                   ],
+                   "source_url": fund.source_url}
                   for fund in ordered],
         "unique_symbols": len(allowlist),
     }
@@ -213,30 +257,93 @@ def build_outputs(funds: Iterable[FundData], checked_at: datetime) -> dict[str, 
     }
 
 
+def _generation_id(outputs: Mapping[str, str]) -> str:
+    digest = hashlib.sha256()
+    for name in sorted(outputs):
+        digest.update(name.encode())
+        digest.update(b"\0")
+        digest.update(outputs[name].encode())
+    return digest.hexdigest()[:24]
+
+
+def load_current_outputs(output_dir: Path) -> dict[str, str]:
+    """Read all authoritative files through the single atomic generation pointer."""
+    manifest = json.loads((output_dir / "current.json").read_text(encoding="utf-8"))
+    expected_files = {"allowlist.csv", "holdings.csv", "metadata.json"}
+    if set(manifest.get("files", ())) != expected_files:
+        raise ValueError("invalid file set in current.json")
+    generation_id = manifest.get("generation")
+    if not isinstance(generation_id, str) or not re.fullmatch(r"[0-9a-f]{24}", generation_id):
+        raise ValueError("invalid generation ID in current.json")
+    if manifest.get("path") != f"generations/{generation_id}":
+        raise ValueError("invalid generation path in current.json")
+    generation = output_dir / manifest["path"]
+    if generation.resolve().parent != (output_dir / "generations").resolve():
+        raise ValueError("invalid generation path in current.json")
+    return {name: (generation / name).read_text(encoding="utf-8") for name in manifest["files"]}
+
+
+def _fsync_directory(path: Path) -> None:
+    """Persist a rename boundary where the platform supports directory fsync."""
+    descriptor = os.open(path, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
 def _publish_atomically(outputs: Mapping[str, str], output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=".refresh-", dir=output_dir))
-    backups: dict[Path, bytes | None] = {}
-    replaced: list[Path] = []
+    generations = output_dir / "generations"
+    generations.mkdir(exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix=".staging-", dir=generations))
+    generation_id = _generation_id(outputs)
+    generation = generations / generation_id
     try:
         for name, content in outputs.items():
             path = staging / name
             path.write_text(content, encoding="utf-8", newline="")
             with path.open("rb") as handle:
                 os.fsync(handle.fileno())
-        for name in sorted(outputs):
-            target = output_dir / name
-            backups[target] = target.read_bytes() if target.exists() else None
-            os.replace(staging / name, target)
-            replaced.append(target)
-    except Exception:
-        for target in reversed(replaced):
-            previous = backups[target]
-            if previous is None:
-                target.unlink(missing_ok=True)
-            else:
-                target.write_bytes(previous)
-        raise
+        _fsync_directory(staging)
+        if not generation.exists():
+            try:
+                # Generations are immutable. An identical concurrent writer may
+                # win the rename race, in which case its complete directory wins.
+                os.rename(staging, generation)
+                _fsync_directory(generations)
+            except OSError as exc:
+                # POSIX may report EEXIST or ENOTEMPTY when the target is an
+                # already-published directory, depending on the filesystem.
+                if exc.errno not in {errno.EEXIST, errno.ENOTEMPTY} or not generation.is_dir():
+                    raise
+        manifest = {"generation": generation_id, "path": f"generations/{generation_id}",
+                    "files": sorted(outputs)}
+        descriptor, temporary_name = tempfile.mkstemp(
+            prefix=".current-", suffix=".tmp", dir=output_dir)
+        pointer = Path(temporary_name)
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as handle:
+                handle.write(json.dumps(manifest, sort_keys=True) + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(pointer, output_dir / "current.json")
+            _fsync_directory(output_dir)
+        finally:
+            pointer.unlink(missing_ok=True)
+
+        # Convenience files are explicitly non-authoritative; readers requiring
+        # a coherent snapshot must use load_current_outputs/current.json.
+        for name, content in outputs.items():
+            descriptor, temporary_name = tempfile.mkstemp(
+                prefix=f".{name}-", suffix=".tmp", dir=output_dir)
+            temporary = Path(temporary_name)
+            try:
+                with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as handle:
+                    handle.write(content)
+                os.replace(temporary, output_dir / name)
+            finally:
+                temporary.unlink(missing_ok=True)
     finally:
         shutil.rmtree(staging, ignore_errors=True)
 

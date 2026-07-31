@@ -1,0 +1,2 @@
+# Keep source and generated CSV fixtures deterministic across platforms.
+*.csv text eol=lf
