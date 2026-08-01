@@ -223,6 +223,72 @@ class MnzlAcquirer:
         return text, MNZL_PAGE_URL, local_export.name
 
 
+def _require_safe_mnzl_page(url: str) -> None:
+    if _safe_mnzl_url(url) is None:
+        raise RuntimeError(f"MNZL browser navigation escaped allowed host or HTTPS: {url}")
+
+
+def _capture_mnzl_download(page, url: str) -> tuple[str, str, date | None]:
+    """Navigate an existing page and capture one bounded issuer CSV download."""
+    _require_safe_mnzl_page(url)
+    oversized_responses: set[str] = set()
+
+    def inspect_size(response) -> None:
+        headers = response.headers
+        disposition = headers.get("content-disposition", "").lower()
+        content_type = headers.get("content-type", "").lower()
+        if "attachment" not in disposition and "text/csv" not in content_type:
+            return
+        try:
+            length = int(headers.get("content-length", ""))
+        except ValueError:
+            return
+        if length > MAX_DOWNLOAD_BYTES:
+            oversized_responses.add(response.url)
+
+    # Python Playwright exposes Download.cancel(), but not create_read_stream().
+    # Record declared oversize responses so the download can be cancelled as soon
+    # as Playwright emits it; the completed-file check below remains authoritative.
+    page.on("response", inspect_size)
+    page.goto(url, wait_until="networkidle")
+    _require_safe_mnzl_page(page.url)
+    if page.url in oversized_responses:
+        raise RuntimeError("browser download exceeds size limit")
+
+    selectors = [
+        "[data-download-holdings]",
+        "[data-testid='download-holdings']",
+    ]
+    control = None
+    for selector in selectors:
+        candidate = page.locator(selector)
+        if candidate.count() and candidate.first.is_visible():
+            control = candidate.first
+            break
+    if control is None:
+        candidate = page.get_by_role("button", name=re.compile(r"download.*(?:holding|csv)", re.I))
+        if not candidate.count():
+            candidate = page.get_by_role("link", name=re.compile(r"download.*(?:holding|csv)", re.I))
+        if not candidate.count():
+            raise RuntimeError("MNZL holdings download control was not found")
+        control = candidate.first
+    page_content = page.content()
+    _require_safe_mnzl_page(page.url)
+    with page.expect_download(timeout=60_000) as pending:
+        control.click()
+    download = pending.value
+    if download.url in oversized_responses:
+        download.cancel()
+        raise RuntimeError("browser download exceeds size limit")
+    path = download.path()
+    if path is None:
+        raise RuntimeError("browser download produced no file")
+    if Path(path).stat().st_size > MAX_DOWNLOAD_BYTES:
+        raise RuntimeError("browser download exceeds size limit")
+    text = _validate_mnzl_csv(Path(path).read_text(encoding="utf-8-sig"))
+    return text, download.suggested_filename, _extract_as_of_date(page_content)
+
+
 def playwright_mnzl_download(url: str) -> tuple[str, str, date | None]:
     """Capture a JS/Blob download using stable control attributes and verify it."""
     try:
@@ -233,35 +299,7 @@ def playwright_mnzl_download(url: str) -> tuple[str, str, date | None]:
         browser = playwright.chromium.launch(headless=True)
         try:
             page = browser.new_page(accept_downloads=True)
-            page.goto(url, wait_until="networkidle")
-            selectors = [
-                "[data-download-holdings]",
-                "[data-testid='download-holdings']",
-            ]
-            control = None
-            for selector in selectors:
-                candidate = page.locator(selector)
-                if candidate.count() and candidate.first.is_visible():
-                    control = candidate.first
-                    break
-            if control is None:
-                candidate = page.get_by_role("button", name=re.compile(r"download.*(?:holding|csv)", re.I))
-                if not candidate.count():
-                    candidate = page.get_by_role("link", name=re.compile(r"download.*(?:holding|csv)", re.I))
-                if not candidate.count():
-                    raise RuntimeError("MNZL holdings download control was not found")
-                control = candidate.first
-            page_content = page.content()
-            with page.expect_download(timeout=60_000) as pending:
-                control.click()
-            download = pending.value
-            path = download.path()
-            if path is None:
-                raise RuntimeError("browser download produced no file")
-            if Path(path).stat().st_size > MAX_DOWNLOAD_BYTES:
-                raise RuntimeError("browser download exceeds size limit")
-            text = _validate_mnzl_csv(Path(path).read_text(encoding="utf-8-sig"))
-            return text, download.suggested_filename, _extract_as_of_date(page_content)
+            return _capture_mnzl_download(page, url)
         finally:
             browser.close()
 

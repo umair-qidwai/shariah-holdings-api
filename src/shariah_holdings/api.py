@@ -10,7 +10,7 @@ from typing import Annotated, Any
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, Response
+from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.templating import Jinja2Templates
 
 from .api_models import (
@@ -23,7 +23,9 @@ from .repository import DataUnavailable, FUNDS, HoldingsRepository, Snapshot
 DEFAULT_PAGE_SIZE = 50
 MAX_PAGE_SIZE = 100
 TEMPLATES = Jinja2Templates(directory=Path(__file__).parent / "templates")
-STRICT_CSP = "default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"
+ASSETS = Path(__file__).parent / "assets"
+STRICT_CSP = ("default-src 'self'; style-src 'self'; object-src 'none'; "
+              "frame-ancestors 'none'; base-uri 'self'")
 DOCS_CSP = (STRICT_CSP + "; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
             "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
             "img-src 'self' data: https://fastapi.tiangolo.com")
@@ -187,6 +189,10 @@ def create_app(data_dir: Path | str | None = None) -> FastAPI:
             name="index.html",
             context={"snapshot": snapshot, "overlap": overlap, "funds": funds},
         )
+
+    @app.get("/assets/site.css", include_in_schema=False)
+    def site_stylesheet():
+        return FileResponse(ASSETS / "site.css", media_type="text/css")
 
     @app.get("/health", tags=["service"], response_model=Health)
     def health(snapshot: Annotated[Snapshot, Depends(_snapshot)]):

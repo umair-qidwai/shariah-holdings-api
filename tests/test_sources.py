@@ -172,8 +172,12 @@ def test_mnzl_rejects_non_csv_content_even_when_download_link_exists():
         MnzlAcquirer(FakeDownloader(), None).acquire()
 
 
-def test_playwright_blob_download_from_representative_local_page(tmp_path):
+def test_playwright_blob_download_from_representative_local_page(tmp_path, monkeypatch):
     pytest.importorskip("playwright.sync_api")
+    # Keep the browser/Blob integration local; production host enforcement is
+    # covered separately with an unpatched page mock.
+    import shariah_holdings.sources as source_module
+    monkeypatch.setattr(source_module, "_require_safe_mnzl_page", lambda url: None)
     page = tmp_path / "mnzl.html"
     page.write_text('''<!doctype html><button data-download-holdings aria-label="Download holdings CSV">Download</button>
 <script>document.querySelector('[data-download-holdings]').onclick=()=>{
@@ -233,3 +237,81 @@ def test_http_downloader_checks_redirect_before_requesting_target():
     with pytest.raises(RuntimeError, match="allowed host"):
         downloader.get_text(SPUS_CSV_URL)
     assert seen == ["www.sp-funds.com"]
+
+
+def test_browser_rejects_redirect_escape_before_finding_or_clicking_control():
+    import shariah_holdings.sources as source_module
+
+    class Page:
+        url = "https://evil.example/phishing"
+
+        def __init__(self):
+            self.locator_called = False
+
+        def goto(self, url, wait_until):
+            assert url == "https://manzilfunds.com/"
+
+        def on(self, event, handler):
+            assert event == "response"
+
+        def locator(self, selector):
+            self.locator_called = True
+            raise AssertionError("controls must not be inspected after a redirect escape")
+
+    page = Page()
+    with pytest.raises(RuntimeError, match="escaped allowed host or HTTPS"):
+        source_module._capture_mnzl_download(page, "https://manzilfunds.com/")
+    assert not page.locator_called
+
+
+def test_browser_cancels_download_with_oversized_content_length(monkeypatch):
+    import shariah_holdings.sources as source_module
+    monkeypatch.setattr(source_module, "MAX_DOWNLOAD_BYTES", 5)
+
+    class Download:
+        url = "https://manzilfunds.com/holdings.csv"
+        suggested_filename = "holdings.csv"
+
+        def __init__(self):
+            self.cancelled = False
+
+        def cancel(self):
+            self.cancelled = True
+
+        def path(self):
+            raise AssertionError("oversized download must be cancelled before waiting for its path")
+
+    class Pending:
+        def __init__(self, download): self.value = download
+        def __enter__(self): return self
+        def __exit__(self, *args): return None
+
+    class Control:
+        def click(self): pass
+        def is_visible(self): return True
+
+    class Locator:
+        first = Control()
+        def count(self): return 1
+        def is_visible(self): return True
+
+    class Response:
+        url = "https://manzilfunds.com/holdings.csv"
+        headers = {"content-length": "6", "content-type": "text/csv"}
+
+    class Page:
+        url = "https://manzilfunds.com/funds/mnzl"
+        def __init__(self, download): self.download, self.response_handler = download, None
+        def on(self, event, handler):
+            if event == "response": self.response_handler = handler
+        def goto(self, url, wait_until): pass
+        def locator(self, selector): return Locator()
+        def content(self): return "Holdings as of 2026-07-31"
+        def expect_download(self, timeout):
+            self.response_handler(Response())
+            return Pending(self.download)
+
+    download = Download()
+    with pytest.raises(RuntimeError, match="size limit"):
+        source_module._capture_mnzl_download(Page(download), "https://manzilfunds.com/")
+    assert download.cancelled

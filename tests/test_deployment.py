@@ -40,6 +40,10 @@ def test_refresh_workflow_separates_read_only_validation_from_minimal_publish():
     assert "git rev-parse FETCH_HEAD" in script
     assert "git push" in publish["steps"][-1]["run"]
     assert "GITHUB_TOKEN" in publish["steps"][-1]["env"]
+    push_script = publish["steps"][-1]["run"]
+    assert "".join(["*", "*", "*"]) not in push_script
+    push_line = next(line for line in push_script.splitlines() if "git push" in line)
+    assert "${GITHUB_TOKEN}" in push_line
 
 
 def test_pull_request_workflow_is_read_only_and_actions_are_pinned():

@@ -1,0 +1,25 @@
+:root { color-scheme: dark; --bg:#07130f; --panel:#10231b; --line:#254536; --text:#edf8f1; --muted:#a9c3b3; --accent:#69dda0; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 15% 0,#173d2b 0,transparent 32rem),var(--bg); color:var(--text); font:16px/1.55 system-ui,-apple-system,sans-serif; }
+main { width:min(1080px,calc(100% - 2rem)); margin:auto; padding:4.5rem 0; }
+header { max-width:760px; margin-bottom:2.5rem; }
+.eyebrow { color:var(--accent); font-weight:750; letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; }
+h1 { margin:.4rem 0 .75rem; font-size:clamp(2.5rem,7vw,5.2rem); line-height:.98; letter-spacing:-.055em; }
+h2 { font-size:1.25rem; margin:0 0 1rem; }
+p { color:var(--muted); }
+a { color:var(--accent); text-underline-offset:3px; }
+.actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+.button { padding:.7rem 1rem; border:1px solid var(--line); border-radius:999px; text-decoration:none; background:#122d21; }
+.grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.card,.section { border:1px solid var(--line); background:color-mix(in srgb,var(--panel) 92%,transparent); border-radius:18px; padding:1.25rem; box-shadow:0 16px 50px #0003; }
+.card span { display:block; color:var(--muted); font-size:.85rem; }
+.card strong { display:block; font-size:2rem; margin-top:.15rem; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+dl { display:grid; grid-template-columns:1fr auto; gap:.6rem 1rem; margin:0; }
+dt { color:var(--muted); } dd { margin:0; font-weight:700; }
+.sources { margin-top:1rem; }
+.sources ul { padding-left:1.2rem; color:var(--muted); }
+footer { margin-top:2rem; color:var(--muted); font-size:.85rem; }
+code { overflow-wrap:anywhere; }
+@media (max-width:760px) { main{padding:2.5rem 0}.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr} }
+@media (max-width:420px) { .grid{grid-template-columns:1fr}.card{display:flex;align-items:center;justify-content:space-between}.card strong{font-size:1.6rem} }

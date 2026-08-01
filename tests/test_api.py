@@ -227,6 +227,17 @@ def test_homepage_is_responsive_and_contains_counts_overlap_sources_and_links(cl
         'href="/downloads/holdings.csv"', "viewport",
     ]:
         assert text in html
+    assert '<link rel="stylesheet" href="/assets/site.css">' in html
+    assert "<style" not in html
+    csp = response.headers["content-security-policy"]
+    assert "'unsafe-inline'" not in csp
+    assert "style-src 'self'" in csp
+
+    stylesheet = client.get("/assets/site.css")
+    assert stylesheet.status_code == 200
+    assert stylesheet.headers["content-type"].startswith("text/css")
+    assert ".grid" in stylesheet.text
+    assert stylesheet.headers["content-security-policy"] == csp
 
 
 def test_missing_or_invalid_authoritative_data_returns_safe_503(tmp_path: Path):

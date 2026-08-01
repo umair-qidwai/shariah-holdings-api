@@ -28,4 +28,4 @@ testpaths = ["tests"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-shariah_holdings = ["templates/*.html"]
+shariah_holdings = ["templates/*.html", "assets/*.css"]
