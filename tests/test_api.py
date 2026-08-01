@@ -468,6 +468,7 @@ def test_docs_csp_allows_swagger_assets_without_weakening_other_paths(client: Te
         docs_csp = client.get(path).headers["content-security-policy"]
         assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in docs_csp
         assert "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in docs_csp
+        assert docs_csp.count("style-src") == 1
     for path in ("/", "/health", "/openapi.json"):
         csp = client.get(path).headers["content-security-policy"]
         assert "cdn.jsdelivr.net" not in csp

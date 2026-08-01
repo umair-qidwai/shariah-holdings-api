@@ -24,9 +24,9 @@ DEFAULT_PAGE_SIZE = 50
 MAX_PAGE_SIZE = 100
 TEMPLATES = Jinja2Templates(directory=Path(__file__).parent / "templates")
 ASSETS = Path(__file__).parent / "assets"
-STRICT_CSP = ("default-src 'self'; style-src 'self'; object-src 'none'; "
-              "frame-ancestors 'none'; base-uri 'self'")
-DOCS_CSP = (STRICT_CSP + "; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+BASE_CSP = "default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"
+STRICT_CSP = BASE_CSP + "; style-src 'self'"
+DOCS_CSP = (BASE_CSP + "; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
             "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
             "img-src 'self' data: https://fastapi.tiangolo.com")
 
