@@ -12,20 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
+      - name: Check out repository without persisted credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.12"
           cache: pip
-
-      - name: Install project and test dependencies
-        run: python -m pip install --upgrade pip && python -m pip install -e ".[test]"
-
+          cache-dependency-path: constraints-ci.txt
+      - name: Install exact reviewed dependencies
+        run: >-
+          python -m pip install -c constraints-ci.txt setuptools &&
+          python -m pip install --no-build-isolation -c constraints-ci.txt -e ".[test]"
       - name: Run full test suite
         run: python -m pytest
-
       - name: Verify committed generated snapshot
         run: python scripts/verify_generation.py --data-dir data

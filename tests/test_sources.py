@@ -201,3 +201,35 @@ def test_acquire_all_uses_official_direct_urls_and_injected_mnzl():
                                                                "mnzl-official-holdings-2026-07-31.csv"))
     assert seen == [SPUS_CSV_URL, HLAL_CSV_URL]
     assert set(sources) == {"SPUS", "HLAL", "MNZL"}
+
+
+def test_http_downloader_rejects_oversize_and_redirect_escape(monkeypatch):
+    import shariah_holdings.sources as source_module
+    monkeypatch.setattr(source_module, "MAX_DOWNLOAD_BYTES", 5)
+    oversized = HttpDownloader(client=httpx.Client(transport=httpx.MockTransport(
+        lambda request: httpx.Response(200, content=b"123456"))), attempts=1)
+    with pytest.raises(RuntimeError, match="size limit"):
+        oversized.get_text("https://example.test/data.csv")
+
+    def redirect(request):
+        if request.url.host == "www.sp-funds.com":
+            return httpx.Response(302, headers={"location": "https://evil.example/file.csv"})
+        return httpx.Response(200, text="stolen")
+    escaped = HttpDownloader(client=httpx.Client(transport=httpx.MockTransport(redirect),
+                                                 follow_redirects=True), attempts=1)
+    with pytest.raises(RuntimeError, match="allowed host"):
+        escaped.get_text(SPUS_CSV_URL)
+
+
+def test_http_downloader_checks_redirect_before_requesting_target():
+    seen = []
+
+    def redirect(request):
+        seen.append(request.url.host)
+        return httpx.Response(302, headers={"location": "https://evil.example/file.csv"})
+
+    downloader = HttpDownloader(client=httpx.Client(transport=httpx.MockTransport(redirect),
+                                                    follow_redirects=True), attempts=1)
+    with pytest.raises(RuntimeError, match="allowed host"):
+        downloader.get_text(SPUS_CSV_URL)
+    assert seen == ["www.sp-funds.com"]

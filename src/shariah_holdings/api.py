@@ -23,6 +23,10 @@ from .repository import DataUnavailable, FUNDS, HoldingsRepository, Snapshot
 DEFAULT_PAGE_SIZE = 50
 MAX_PAGE_SIZE = 100
 TEMPLATES = Jinja2Templates(directory=Path(__file__).parent / "templates")
+STRICT_CSP = "default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"
+DOCS_CSP = (STRICT_CSP + "; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+            "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+            "img-src 'self' data: https://fastapi.tiangolo.com")
 
 
 def _repository(request: Request) -> HoldingsRepository:
@@ -138,7 +142,8 @@ def create_app(data_dir: Path | str | None = None) -> FastAPI:
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["Referrer-Policy"] = "no-referrer"
-        response.headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self' 'unsafe-inline'"
+        csp = DOCS_CSP if request.url.path in {"/docs", "/docs/oauth2-redirect", "/redoc"} else STRICT_CSP
+        response.headers["Content-Security-Policy"] = csp
         # Starlette adds the simple-request CORS header regardless of method.
         # Do not advertise non-GET responses as cross-origin-readable.
         if request.method not in {"GET", "HEAD", "OPTIONS"}:
@@ -159,7 +164,7 @@ def create_app(data_dir: Path | str | None = None) -> FastAPI:
                     "X-Content-Type-Options": "nosniff",
                     "X-Frame-Options": "DENY",
                     "Referrer-Policy": "no-referrer",
-                    "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'",
+                    "Content-Security-Policy": csp,
                 }
                 if request.headers.get("origin"):
                     headers["Access-Control-Allow-Origin"] = "*"

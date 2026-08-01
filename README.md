@@ -56,7 +56,7 @@ python -m shariah_holdings.cli \
   --dry-run
 ```
 
-A successful non-dry refresh atomically publishes a content-addressed generation under `data/generations/` and updates `data/current.json` last. All three funds must pass schema, source-row, holding-count, total-weight, identifier, and freshness checks; otherwise the prior generation remains authoritative. SPUS and HLAL default to a 7-day maximum age. MNZL defaults to 120 days because it is published quarterly; `--max-age-days` and `--mnzl-max-age-days` configure these independently.
+A successful non-dry refresh serializes publication with a file lock, atomically publishes a content-addressed generation under `data/generations/`, and updates `data/current.json` last. If normalized holdings, source URLs, and holdings dates are unchanged, refresh is a byte-for-byte no-op: the existing generation and its original `checked_at`/`acquired_at` are retained. All three funds must pass schema, bounded input/row, non-negative numeric, source-row, holding-count, total-weight, identifier, and freshness checks; otherwise the prior generation remains authoritative. SPUS and HLAL default to a 7-day maximum age. MNZL defaults to 120 days because it is published quarterly; `--max-age-days` and `--mnzl-max-age-days` configure these independently.
 
 ## MNZL limitation and manual update
 
@@ -81,14 +81,13 @@ For an undated live export that you have independently verified against an issue
 
 `.github/workflows/refresh.yml` runs at **23:30 UTC Monday-Friday** (18:30 EST / 19:30 EDT) and supports manual `workflow_dispatch`. It:
 
-1. checks out the branch and installs Python, test/browser extras, and Playwright Chromium with system dependencies;
-2. runs the complete test suite;
-3. selects the latest staged dated MNZL export;
-4. refreshes SPUS and HLAL live, tries MNZL live first, and uses the staged MNZL only on live failure;
-5. reloads and verifies the generated snapshot and count floors;
-6. commits and pushes `data/` only when its generated contents changed.
+1. validates in a read-only job using full-SHA-pinned Actions, non-persisted checkout credentials, and exact reviewed dependency constraints;
+2. runs the complete test suite, selects the latest staged dated MNZL export, and performs the fail-closed refresh;
+3. verifies the snapshot/count floors and uploads a checksummed generated-data artifact;
+4. uses a separate minimal `contents: write` job to verify the artifact and ensure the branch has not moved;
+5. commits only actual `data/` changes and exposes the ephemeral token only to the final push step.
 
-Any download, validation, test, or verification failure stops the workflow without changing committed data. A data commit triggers the normal Vercel Git deployment. The workflow has only `contents: write`; repository branch protection must permit the GitHub Actions bot to push if automatic commits are desired.
+Any download, validation, test, or verification failure stops the workflow without changing committed data. A data commit triggers the normal Vercel Git deployment. Only the publish job has `contents: write`; repository branch protection must permit the GitHub Actions bot to push if automatic commits are desired.
 
 ## Deploy to Vercel
 

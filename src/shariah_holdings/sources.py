@@ -18,6 +18,23 @@ USER_AGENT = "shariah-holdings-refresh/0.1 (+https://github.com/)"
 MNZL_LOCAL_RE = re.compile(r"^mnzl-official-holdings-\d{4}-\d{2}-\d{2}\.csv$", re.I)
 LINK_RE = re.compile(r'''<a\b[^>]*href=["']([^"']+)["'][^>]*>(.*?)</a>''', re.I | re.S)
 MNZL_HEADER = "TICKER,NAME,CUSIP,SHARES,% of NET ASSETS"
+MAX_DOWNLOAD_BYTES = 20 * 1024 * 1024
+MAX_REDIRECTS = 10
+
+
+def _allowed_hosts(url: str) -> tuple[str, ...]:
+    host = (urlparse(url).hostname or "").lower()
+    if host == "www.sp-funds.com" or host.endswith(".sp-funds.com"):
+        return ("sp-funds.com",)
+    if host == "docs.google.com" or host.endswith(".google.com"):
+        return ("google.com", "googleusercontent.com")
+    if host == "manzilfunds.com" or host.endswith(".manzilfunds.com"):
+        return ("manzilfunds.com",)
+    return (host,)
+
+
+def _host_allowed(host: str, suffixes: tuple[str, ...]) -> bool:
+    return any(host == suffix or host.endswith("." + suffix) for suffix in suffixes)
 
 
 def _filename(as_of_date: date) -> str:
@@ -57,7 +74,7 @@ def _safe_mnzl_url(candidate: str) -> str | None:
     url = urljoin(MNZL_PAGE_URL, candidate.replace("&amp;", "&"))
     parsed = urlparse(url)
     hostname = (parsed.hostname or "").lower()
-    if (parsed.scheme not in {"http", "https"}
+    if (parsed.scheme != "https"
             or not (hostname == "manzilfunds.com" or hostname.endswith(".manzilfunds.com"))):
         return None
     return url
@@ -100,9 +117,32 @@ class HttpDownloader:
         last_error: Exception | None = None
         for attempt in range(1, self.attempts + 1):
             try:
-                response = self.client.get(url)
-                response.raise_for_status()
-                text = response.content.decode("utf-8-sig")
+                allowed_hosts = _allowed_hosts(url)
+                current_url = url
+                for redirect_count in range(MAX_REDIRECTS + 1):
+                    parsed = urlparse(current_url)
+                    host = (parsed.hostname or "").lower()
+                    if parsed.scheme != "https" or not _host_allowed(host, allowed_hosts):
+                        raise ValueError(f"redirect escaped allowed host or HTTPS: {current_url}")
+                    # Follow redirects ourselves so forbidden targets are rejected
+                    # before a request is sent, even if the client default follows.
+                    with self.client.stream("GET", current_url, follow_redirects=False) as response:
+                        if response.is_redirect:
+                            if redirect_count == MAX_REDIRECTS:
+                                raise ValueError("too many redirects")
+                            current_url = urljoin(str(response.url), response.headers["location"])
+                            continue
+                        response.raise_for_status()
+                        length = response.headers.get("content-length")
+                        if length is not None and int(length) > MAX_DOWNLOAD_BYTES:
+                            raise ValueError("download exceeds size limit")
+                        body = bytearray()
+                        for chunk in response.iter_bytes(chunk_size=64 * 1024):
+                            body.extend(chunk)
+                            if len(body) > MAX_DOWNLOAD_BYTES:
+                                raise ValueError("download exceeds size limit")
+                        break
+                text = bytes(body).decode("utf-8-sig")
                 if not text.strip():
                     raise ValueError("download was empty")
                 return text
@@ -177,6 +217,8 @@ class MnzlAcquirer:
             raise ValueError("MNZL local export must be named mnzl-official-holdings-YYYY-MM-DD.csv")
         filename_date = date.fromisoformat(local_export.name[-14:-4])
         _verified_date(as_of_date, filename_date)
+        if local_export.stat().st_size > MAX_DOWNLOAD_BYTES:
+            raise ValueError("MNZL local export exceeds size limit")
         text = _validate_mnzl_csv(local_export.read_text(encoding="utf-8-sig"))
         return text, MNZL_PAGE_URL, local_export.name
 
@@ -195,7 +237,6 @@ def playwright_mnzl_download(url: str) -> tuple[str, str, date | None]:
             selectors = [
                 "[data-download-holdings]",
                 "[data-testid='download-holdings']",
-                "a[download]",
             ]
             control = None
             for selector in selectors:
@@ -217,6 +258,8 @@ def playwright_mnzl_download(url: str) -> tuple[str, str, date | None]:
             path = download.path()
             if path is None:
                 raise RuntimeError("browser download produced no file")
+            if Path(path).stat().st_size > MAX_DOWNLOAD_BYTES:
+                raise RuntimeError("browser download exceeds size limit")
             text = _validate_mnzl_csv(Path(path).read_text(encoding="utf-8-sig"))
             return text, download.suggested_filename, _extract_as_of_date(page_content)
         finally:

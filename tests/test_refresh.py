@@ -258,6 +258,7 @@ def test_authoritative_manifest_switch_exposes_one_immutable_generation(tmp_path
     with pytest.raises(OSError, match="pointer failure"):
         refresh_to_directory(changed, tmp_path, POLICY, NOW.replace(hour=19))
     assert load_current_outputs(tmp_path) == before
+    assert {name: (tmp_path / name).read_text(encoding="utf-8") for name in before} == before
     manifest = __import__("json").loads((tmp_path / "current.json").read_text())
     generation = tmp_path / manifest["path"]
     assert generation.is_dir()
@@ -335,3 +336,42 @@ def test_concurrent_generations_are_each_complete_and_pointer_is_coherent(tmp_pa
     assert len(generations) == 2
     assert all({item.name for item in generation.iterdir()} ==
                {"allowlist.csv", "holdings.csv", "metadata.json"} for generation in generations)
+    assert {name: (tmp_path / name).read_text(encoding="utf-8") for name in current} == current
+
+
+def test_identical_refresh_one_hour_later_is_byte_for_byte_noop(tmp_path):
+    sources = {
+        "SPUS": (text("SPUS.csv"), "https://official.test/SPUS.csv"),
+        "HLAL": (text("HLAL.csv"), "https://official.test/HLAL.csv"),
+        "MNZL": (text("mnzl-official-holdings-2026-07-31.csv"), "https://manzilfunds.com/",
+                 "mnzl-official-holdings-2026-07-31.csv"),
+    }
+    first = refresh_to_directory(sources, tmp_path, POLICY, NOW)
+    before = {p.relative_to(tmp_path): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
+    second = refresh_to_directory(sources, tmp_path, POLICY, NOW.replace(hour=19))
+    after = {p.relative_to(tmp_path): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
+    assert before == after
+    assert second == first
+
+    changed = dict(sources)
+    changed["SPUS"] = (sources["SPUS"][0].replace("Apple Inc", "Apple Computer"), sources["SPUS"][1])
+    refresh_to_directory(changed, tmp_path, POLICY, NOW.replace(hour=20))
+    assert (tmp_path / "current.json").read_bytes() != before[Path("current.json")]
+
+
+@pytest.mark.parametrize(("old", "new"), [
+    ("60.00%", "-60.00%"), (",100,200,20000,", ",-100,200,20000,"),
+    (",100,200,20000,", ",100,200,-20000,"),
+])
+def test_standard_rejects_negative_numeric_fields_before_classification(old, new):
+    raw = text("SPUS.csv").replace(old, new, 1)
+    with pytest.raises(ValueError, match="negative"):
+        parse_standard_holdings("SPUS", raw, "https://official.test/SPUS.csv", POLICY, NOW.date())
+
+
+def test_mnzl_rejects_negative_weight_on_cash_before_classification(tmp_path):
+    path = tmp_path / "mnzl-official-holdings-2026-07-31.csv"
+    raw = text(path.name).replace("CASH&OTHER,Cash,,1,10.00", "CASH&OTHER,Cash,,1,-10.00")
+    path.write_text(raw, encoding="utf-8")
+    with pytest.raises(ValueError, match="negative"):
+        parse_mnzl_holdings(path, "https://manzilfunds.com/", POLICY, NOW.date())

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import errno
+import fcntl
 import io
 import json
 import os
@@ -22,6 +23,8 @@ from .models import CUSIP_RE, Exclusion, FundData, Holding, TICKER_RE
 STANDARD_COLUMNS = {"Date", "Account", "StockTicker", "SecurityName", "Shares", "MarketValue", "Weightings"}
 MNZL_COLUMNS = {"TICKER", "NAME", "CUSIP", "SHARES", "% of NET ASSETS"}
 MNZL_FILENAME_RE = re.compile(r"^mnzl-official-holdings-(\d{4}-\d{2}-\d{2})\.csv$", re.I)
+MAX_SOURCE_BYTES = 20 * 1024 * 1024
+MAX_SOURCE_ROWS = 10_000
 
 
 @dataclass(frozen=True)
@@ -70,6 +73,8 @@ def _validate_date(fund: str, value: date, policy: ValidationPolicy, today: date
 
 
 def _rows(raw_csv: str, required: set[str], fund: str) -> list[dict[str, str]]:
+    if len(raw_csv.encode("utf-8")) > MAX_SOURCE_BYTES:
+        raise ValueError(f"{fund}: source exceeds size limit")
     reader = csv.DictReader(io.StringIO(raw_csv.lstrip("\ufeff")))
     fieldnames = reader.fieldnames or []
     duplicates = sorted({name for name in fieldnames if fieldnames.count(name) > 1})
@@ -78,7 +83,11 @@ def _rows(raw_csv: str, required: set[str], fund: str) -> list[dict[str, str]]:
     missing = required - set(fieldnames)
     if missing:
         raise ValueError(f"{fund}: missing columns: {', '.join(sorted(missing))}")
-    rows = list(reader)
+    rows = []
+    for row in reader:
+        if len(rows) >= MAX_SOURCE_ROWS:
+            raise ValueError(f"{fund}: source exceeds row limit")
+        rows.append(row)
     if not rows:
         raise ValueError(f"{fund}: no data rows")
     if any(None in row for row in rows):
@@ -141,6 +150,8 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
     parsed = [(_decimal(row.get("Weightings"), "weight"),
                _decimal(row.get("Shares"), "shares"),
                _decimal(row.get("MarketValue"), "market value")) for row in rows]
+    if any(value < 0 for values in parsed for value in values):
+        raise ValueError(f"{fund}: negative weight, shares, or market value")
     total_weight = sum((values[0] for values in parsed), Decimal())
     holdings: list[Holding] = []
     exclusions: list[Exclusion] = []
@@ -187,6 +198,8 @@ def parse_mnzl_text(raw_csv: str, filename: str, source_url: str,
     # Validate all numerics before classification or aggregate checks.
     parsed = [(_decimal(row.get("% of NET ASSETS"), "weight"),
                _mnzl_shares(row.get("SHARES"))) for row in rows]
+    if any(value < 0 for values in parsed for value in values):
+        raise ValueError("MNZL: negative weight or shares")
     total_weight = sum((values[0] for values in parsed), Decimal())
     holdings: list[Holding] = []
     exclusions: list[Exclusion] = []
@@ -222,6 +235,8 @@ def parse_mnzl_text(raw_csv: str, filename: str, source_url: str,
 
 def parse_mnzl_holdings(path: Path, source_url: str, policy: ValidationPolicy,
                         today: date | None = None) -> FundData:
+    if path.stat().st_size > MAX_SOURCE_BYTES:
+        raise ValueError("MNZL: source exceeds size limit")
     return parse_mnzl_text(path.read_text(encoding="utf-8-sig"), path.name, source_url, policy, today)
 
 
@@ -326,13 +341,39 @@ def _fsync_directory(path: Path) -> None:
         os.close(descriptor)
 
 
-def _publish_atomically(outputs: Mapping[str, str], output_dir: Path) -> None:
+class _PublicationLock:
+    def __init__(self, output_dir: Path):
+        self.path = output_dir / ".publish.lock"
+        self.handle = None
+
+    def __enter__(self):
+        self.handle = self.path.open("a+b")
+        fcntl.flock(self.handle.fileno(), fcntl.LOCK_EX)
+        return self
+
+    def __exit__(self, *_):
+        assert self.handle is not None
+        fcntl.flock(self.handle.fileno(), fcntl.LOCK_UN)
+        self.handle.close()
+
+
+def _semantically_equal(left: Mapping[str, str], right: Mapping[str, str]) -> bool:
+    """Compare normalized positions; timestamps and excluded source rows are not publications."""
+    return left.get("holdings.csv") == right.get("holdings.csv")
+
+
+def _publish_atomically_unlocked(outputs: Mapping[str, str], output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     generations = output_dir / "generations"
     generations.mkdir(exist_ok=True)
     staging = Path(tempfile.mkdtemp(prefix=".staging-", dir=generations))
     generation_id = _generation_id(outputs)
     generation = generations / generation_id
+    try:
+        previous = load_current_outputs(output_dir)
+    except (FileNotFoundError, OSError, ValueError, KeyError, json.JSONDecodeError):
+        previous = None
+    committed = False
     try:
         for name, content in outputs.items():
             path = staging / name
@@ -377,13 +418,37 @@ def _publish_atomically(outputs: Mapping[str, str], output_dir: Path) -> None:
                 handle.write(json.dumps(manifest, sort_keys=True) + "\n")
                 handle.flush()
                 os.fsync(handle.fileno())
-            # Commit point: no fallible publication work follows this swap.
+            # Commit point: the authoritative pointer changes only after all files are durable.
             os.replace(pointer, output_dir / "current.json")
+            committed = True
+            _fsync_directory(output_dir)
         except Exception:
             pointer.unlink(missing_ok=True)
             raise
+    except Exception:
+        if not committed:
+            if previous is None:
+                for name in outputs:
+                    (output_dir / name).unlink(missing_ok=True)
+            else:
+                for name, content in previous.items():
+                    descriptor, temporary_name = tempfile.mkstemp(
+                        prefix=f".{name}-restore-", suffix=".tmp", dir=output_dir)
+                    with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as handle:
+                        handle.write(content)
+                        handle.flush()
+                        os.fsync(handle.fileno())
+                    os.rename(temporary_name, output_dir / name)
+                _fsync_directory(output_dir)
+        raise
     finally:
         shutil.rmtree(staging, ignore_errors=True)
+
+
+def _publish_atomically(outputs: Mapping[str, str], output_dir: Path) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with _PublicationLock(output_dir):
+        _publish_atomically_unlocked(outputs, output_dir)
 
 
 def refresh_to_directory(sources: Mapping[str, tuple[str, ...]], output_dir: Path,
@@ -400,5 +465,13 @@ def refresh_to_directory(sources: Mapping[str, tuple[str, ...]], output_dir: Pat
                         checked_at.date()),
     ]
     outputs = build_outputs(funds, checked_at)
-    _publish_atomically(outputs, output_dir)
-    return outputs
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with _PublicationLock(output_dir):
+        try:
+            current = load_current_outputs(output_dir)
+        except (FileNotFoundError, OSError, ValueError, KeyError, json.JSONDecodeError):
+            current = None
+        if current is not None and _semantically_equal(outputs, current):
+            return current
+        _publish_atomically_unlocked(outputs, output_dir)
+        return outputs

@@ -450,3 +450,14 @@ def test_security_headers_and_deliberate_read_only_public_cors(client: TestClien
     rejected_write = client.post("/stocks", headers={"Origin": "https://consumer.example"})
     assert rejected_write.status_code == 405
     assert "access-control-allow-origin" not in rejected_write.headers
+
+
+def test_docs_csp_allows_swagger_assets_without_weakening_other_paths(client: TestClient):
+    for path in ("/docs", "/redoc"):
+        docs_csp = client.get(path).headers["content-security-policy"]
+        assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in docs_csp
+        assert "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in docs_csp
+    for path in ("/", "/health", "/openapi.json"):
+        csp = client.get(path).headers["content-security-policy"]
+        assert "cdn.jsdelivr.net" not in csp
+        assert "object-src 'none'" in csp
