@@ -2,6 +2,7 @@ import csv
 import io
 import json
 import subprocess
+import sys
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -423,7 +424,7 @@ def test_vercel_entry_imports_in_isolated_python_without_editable_install():
         "assert m.app.title == 'Shariah Holdings API'"
     )
     result = subprocess.run(
-        [str(root / ".venv" / "bin" / "python"), "-I", "-c", script],
+        [sys.executable, "-I", "-c", script],
         cwd="/", capture_output=True, text=True, check=False,
     )
     assert result.returncode == 0, result.stderr
