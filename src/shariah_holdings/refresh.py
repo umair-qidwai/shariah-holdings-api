@@ -143,9 +143,10 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
         from collections import Counter
         date_counts = Counter(date_values)
         primary_date = date_counts.most_common(1)[0][0]
-        if date_counts[primary_date] >= len(rows) * 0.95:
-            rows = [row for row in rows if (row.get("Date") or "").strip() == primary_date]
-            date_values = {primary_date}
+        # Filter rows to only keep those matching the primary date
+        rows = [row for row in rows if (row.get("Date") or "").strip() == primary_date]
+        # Recalculate date_values
+        date_values = {(row.get("Date") or "").strip() for row in rows}
     if len(date_values) != 1:
         raise ValueError(f"{fund}: expected exactly one holdings date")
     try:
