@@ -139,6 +139,14 @@ def parse_standard_holdings(fund: str, raw_csv: str, source_url: str,
         raise ValueError(f"{fund}: unexpected Account value(s): {sorted(accounts)}")
     date_values = {(row.get("Date") or "").strip() for row in rows}
     if len(date_values) != 1:
+        # If there's one date on the vast majority of rows (≥95%), drop the stragglers
+        from collections import Counter
+        date_counts = Counter(date_values)
+        primary_date = date_counts.most_common(1)[0][0]
+        if date_counts[primary_date] >= len(rows) * 0.95:
+            rows = [row for row in rows if (row.get("Date") or "").strip() == primary_date]
+            date_values = {primary_date}
+    if len(date_values) != 1:
         raise ValueError(f"{fund}: expected exactly one holdings date")
     try:
         holdings_date = datetime.strptime(next(iter(date_values)), "%m/%d/%Y").date()
