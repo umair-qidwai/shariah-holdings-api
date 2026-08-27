@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import math
 import os
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Annotated, Any
 
@@ -24,6 +25,7 @@ DEFAULT_PAGE_SIZE = 50
 MAX_PAGE_SIZE = 100
 TEMPLATES = Jinja2Templates(directory=Path(__file__).parent / "templates")
 ASSETS = Path(__file__).parent / "assets"
+EST = timezone(timedelta(hours=-5), name="EST")
 BASE_CSP = "default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"
 STRICT_CSP = BASE_CSP + "; style-src 'self'"
 DOCS_CSP = (BASE_CSP + "; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
@@ -45,6 +47,11 @@ def _meta(snapshot: Snapshot) -> dict[str, str]:
     return {"generation": snapshot.generation, "checked_at": snapshot.checked_at}
 
 
+def _checked_at_est(value: str) -> str:
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return parsed.astimezone(EST).strftime("%Y-%m-%d %H:%M EST")
+
+
 def _normalize_fund(fund: str, *, not_found: bool = False) -> str:
     if not fund.isascii():
         status = 404 if not_found else 422
@@ -54,6 +61,9 @@ def _normalize_fund(fund: str, *, not_found: bool = False) -> str:
         status = 404 if not_found else 422
         raise HTTPException(status_code=status, detail=f"Unsupported fund: {fund}")
     return normalized
+
+
+TEMPLATES.env.filters["est"] = _checked_at_est
 
 
 def _holding(row: dict[str, str]) -> dict[str, str | None]:

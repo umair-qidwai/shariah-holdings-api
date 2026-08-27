@@ -222,7 +222,7 @@ def test_homepage_is_responsive_and_contains_counts_overlap_sources_and_links(cl
     assert response.headers["content-type"].startswith("text/html")
     html = response.text
     for text in [
-        "Shariah Holdings", "2026-07-31T18:00:00Z", "SPUS", "HLAL", "MNZL",
+        "Shariah Holdings", "2026-07-31 13:00 EST", "SPUS", "HLAL", "MNZL",
         "Union", "Exactly one", "At least two", "official", "fail-closed",
         'href="/docs"', 'href="/downloads/shariah-list.csv"',
         'href="/downloads/holdings.csv"', "viewport",

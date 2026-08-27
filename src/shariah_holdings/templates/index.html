@@ -11,7 +11,7 @@
   <header>
     <div class="eyebrow">Validated ETF data</div>
     <h1>Shariah Holdings</h1>
-    <p>A transparent, read-only view of the equity holdings reported by three Shariah-focused ETFs. Last refresh: <code>{{ snapshot.checked_at }}</code>.</p>
+    <p>A transparent, read-only view of the equity holdings reported by three Shariah-focused ETFs. Last refresh: <code>{{ snapshot.checked_at | est }}</code>.</p>
     <nav class="actions" aria-label="Data links">
       <a class="button" href="/docs">API docs</a>
       <a class="button" href="/downloads/shariah-list.csv">Download Shariah list</a>
