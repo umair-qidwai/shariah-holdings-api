@@ -42,6 +42,20 @@ def test_mnzl_schema_uses_dated_filename_and_preserves_missing_market_value(tmp_
     assert fund.holdings[0].shares == 10
 
 
+def test_hlal_ignores_one_stale_cash_row_when_current_date_is_obvious(tmp_path):
+    path = tmp_path / "HLAL.csv"
+    path.write_text(
+        text("full/HLAL.csv").rstrip("\n")
+        + "\n07/04/2026,HLAL,Cash&Other,Cash&Other,Cash & Other,1506240.66,1,1506240.66,0.16%,929554050,13075000,523,Y\n",
+        encoding="utf-8",
+    )
+    fund = parse_standard_holdings("HLAL", path.read_text(encoding="utf-8"),
+                                   "https://official.test/HLAL.csv", POLICY, NOW.date())
+    assert fund.holdings_date == date(2026, 7, 31)
+    assert len(fund.holdings) == 211
+    assert fund.exclusions[-1].reason == "cash_or_money_market"
+
+
 def test_mnzl_shares_use_period_as_thousands_separator_and_zero_weight_is_equity(tmp_path):
     path = tmp_path / "mnzl-official-holdings-2026-07-31.csv"
     path.write_text(
