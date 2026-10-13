@@ -1,203 +1,203 @@
 fund,symbol,name,cusip,weight,shares,market_value,holdings_date,source_url
-HLAL,A,Agilent Technologies Inc,00846U101,0.12,6916,1163063.72,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,AAPL,Apple Inc,,12.05,351402,119624268.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ABT,Abbott Laboratories,,0.42,42430,4178930.7,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ADBE,Adobe Inc,00724F101,0.24,9728,2344934.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ADI,Analog Devices Inc,,0.49,11950,4850863.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ADM,Archer-Daniels-Midland Co,,0.10,11743,968210.35,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ADSK,Autodesk Inc,,0.12,5167,1207011.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,AMAT,Applied Materials Inc,,1.00,19409,9890244.13,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,AMD,Advanced Micro Devices Inc,,2.49,39827,24719822.36,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ATO,Atmos Energy Corp,,0.07,4036,648423.76,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,AVGO,Broadcom Inc,11135F101,4.13,113913,41024627.82,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,AXON,Axon Enterprise Inc,05464C101,0.08,1890,788715.9,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,BDX,Becton Dickinson & Co,,0.12,6732,1230273,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,BIIB,Biogen Inc,09062X103,0.08,3606,787658.58,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,BKR,Baker Hughes Co,05722G100,0.14,24310,1368653,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,BSX,Boston Scientific Corp,101137107,0.15,36309,1526430.36,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,BURL,Burlington Stores Inc,122017106,0.04,1531,423842.04,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CAH,Cardinal Health Inc,14149Y108,0.14,5730,1369240.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CARR,Carrier Global Corp,14448C104,0.11,19120,1067469.6,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CBRE,CBRE Group Inc,12504L109,0.09,7147,936828.76,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CDNS,Cadence Design Systems Inc,127387108,0.24,6750,2354670,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CDW,CDW Corp/DE,12514G108,0.04,3125,437125,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CHD,Church & Dwight Co Inc,171340102,0.06,5799,566736.27,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CIEN,Ciena Corp,171779309,0.15,3444,1466902.92,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CMI,Cummins Inc,231021106,0.18,3380,1758952,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,COHR,Coherent Corp,19247G107,0.14,4572,1382344.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,COP,ConocoPhillips,20825C104,0.40,29860,4006913.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,COR,Cencora Inc,,0.15,4570,1468569.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CRH,CRH PLC,G25508105,0.13,16370,1340375.6,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CRM,Salesforce Inc,79466L302,0.45,19464,4433899.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CSCO,Cisco Systems Inc,17275R102,1.12,96746,11115147.94,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CTAS,Cintas Corp,,0.17,8347,1678748.64,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CTVA,Corteva Inc,22052L104,0.02,16456,226270,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CVNA,Carvana Co,,0.11,16845,1064604,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,CVX,Chevron Corp,,0.97,45430,9610716.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DAL,Delta Air Lines Inc,247361702,0.03,4030,331024.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DD,DuPont de Nemours Inc,26614N201,0.04,3344.333333,443057.28,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DELL,Dell Technologies Inc,24703L202,0.43,7370,4234433.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DGX,Quest Diagnostics Inc,74834L100,0.06,2704,624110.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DHI,DR Horton Inc,23331A109,0.08,6068,824155.76,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DHR,Danaher Corp,,0.34,15473,3364758.58,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DLR,Digital Realty Trust Inc,253868103,0.16,9076,1598011.32,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DLTR,Dollar Tree Inc,256746108,0.06,4700,557514,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DOV,Dover Corp,260003108,0.06,3263,616576.48,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DOW,Dow Inc,260557103,0.05,17641,504356.19,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DVN,Devon Energy Corp,25179M103,0.14,27598,1350094.16,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,DXCM,Dexcom Inc,252131107,0.08,9184,775221.44,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EBAY,eBay Inc,278642103,0.11,9814,1098971.72,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ECL,Ecolab Inc,278865100,0.17,6072,1710421.68,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EL,Estee Lauder Cos Inc/The,,0.06,6040,569692.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EMR,Emerson Electric Co,291011104,0.22,13757,2188188.42,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EOG,EOG Resources Inc,26875P101,0.20,13109,1946817.59,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EW,Edwards Lifesciences Corp,,0.12,13956,1175653.44,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EXE,Expand Energy Corp,165167735,0.05,5388,478777.68,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,EXPD,Expeditors International of Washington Inc,,0.06,3190,617934.9,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FAST,Fastenal Co,,0.14,28126,1420081.74,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FDX,FedEx Corp,31428X106,0.16,5361,1563964.53,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FERG,Ferguson Enterprises Inc,31488V107,0.10,4682,1014729.86,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FFIV,F5 Inc,,0.06,1383,638475.78,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FIX,Comfort Systems USA Inc,199908104,0.15,851,1452137.89,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FLEX,Flex Ltd,Y2573F102,0.10,8967,1028873.58,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FSLR,First Solar Inc,,0.04,2488,444978.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FTV,Fortive Corp,34959J108,0.04,7451,420385.42,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FWONA,Liberty Media Corp,,0.01,578,50615.46,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,FWONK,Liberty Media Corp,531229755,0.05,5319,505677.33,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GEHC,GE HealthCare Technologies Inc,36266G107,0.07,11121,714190.62,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GEV,GE Vernova Inc,36828A101,0.66,6586,6581719.1,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GFS,GLOBALFOUNDRIES Inc,G39387108,0.02,3084,152226.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GLW,Corning Inc,219350105,0.30,19356,2958177.48,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GOOG,Alphabet Inc,02079K107,4.04,116426,40150670.36,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GOOGL,Alphabet Inc,02079K305,5.00,142679,49693668.91,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GPC,Genuine Parts Co,372460105,0.04,3363,431035.71,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GRMN,Garmin Ltd,H2906T109,0.11,4021,1079397.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,GWW,WW Grainger Inc,384802104,0.14,1064,1349864.88,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,HAL,Halliburton Co,,0.07,20397,664330.29,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,HPE,Hewlett Packard Enterprise Co,42824C109,0.23,32425,2302175,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,HPQ,HP Inc,40434L105,0.07,22375,725845,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,HSY,Hershey Co/The,427866108,0.06,3531,573928.74,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,IDXX,IDEXX Laboratories Inc,45168D104,0.10,1933,991899.62,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,IEX,IDEX Corp,45167R104,0.04,1811,419699.25,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,IFF,International Flavors & Fragrances Inc,459506101,0.05,6288,532279.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ILMN,Illumina Inc,452327109,0.10,3720,984200.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,INTC,Intel Corp,458140100,1.21,111879,11980003.32,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,IP,International Paper Co,460146103,0.04,12846,409530.48,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,IR,Ingersoll Rand Inc,45687V106,0.08,9583,747474,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ISRG,Intuitive Surgical Inc,46120E602,0.36,8631,3585403.71,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,J,Jacobs Solutions Inc,46982L108,0.04,2860,396367.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,JBHT,JB Hunt Transport Services Inc,445658107,0.04,1839,420064.38,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,JBL,Jabil Inc,466313103,0.08,2549,762558.84,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,JCI,Johnson Controls International plc,G51502105,0.23,14836,2284744,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,JNJ,Johnson & Johnson,478160104,1.52,59003,15133089.44,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,KLAC,KLA CORP,482480100,0.63,32030,6300941.6,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,KMB,Kimberly-Clark Corp,494368103,0.08,8085,790227.9,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,KO,Coca-Cola Co/The,191216100,0.84,95172,8353246.44,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,KVUE,Kenvue Inc,49177J102,0.08,46420,823026.6,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LEN,Lennar Corp,526057104,0.04,4894,379774.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LEN/B,Lennar Corp,526057302,0.00,213,16413.78,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LH,Labcorp Holdings Inc,504922105,0.06,2006,630285.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LIN,Linde PLC,G54950103,0.55,11290,5438393,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LLY,Eli Lilly & Co,532457108,2.28,19400,22690240,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LRCX,Lam Research Corp,512807306,0.99,30602,9810695.18,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LUV,Southwest Airlines Co,844741108,0.01,2997,123955.92,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,LYB,LyondellBasell Industries NV,N53745100,0.04,6316,381107.44,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MBGL,Mobility Global Inc,60744M106,0.01,7235,130808.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MCK,McKesson Corp,58155Q103,0.27,2869,2668887.25,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MDLN,Medline Inc,58507V107,0.04,10981,392460.94,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MDLZ,Mondelez International Inc,609207105,0.19,31433,1907040.11,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MDT,Medtronic PLC,G5960L103,0.28,31406,2755876.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,META,Meta Platforms Inc,30303M102,3.91,53824,38801183.36,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MLM,Martin Marietta Materials Inc,573284106,0.07,1460,703092.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MMM,3M Co,88579Y101,0.21,12643,2068141.94,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MNST,Monster Beverage Corp,61174X109,0.15,34330,1498504.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MPC,Marathon Petroleum Corp,56585A102,0.34,7200,3336048,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MPWR,Monolithic Power Systems Inc,609839105,0.16,1157,1584858.6,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MRVL,MARVELL TECHNOLOGY INC,573874104,0.59,21357,5864632.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MSFT,Microsoft Corp,594918104,9.57,181923,95074779.03,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MSTR,Strategy Inc,594972408,0.13,8618,1305368.46,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MTZ,MasTec Inc,576323109,0.03,1539,333439.74,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,MU,Micron Technology Inc,595112103,2.88,27601,28590219.84,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NEM,Newmont Corp,651639106,0.30,25796,2980727.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NKE,NIKE Inc,654106103,0.10,28900,1003986,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NOW,ServiceNow Inc,81762P102,0.35,25127,3511498.25,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NTAP,NetApp Inc,64110D104,0.11,4818,1110693.54,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NUE,Nucor Corp,670346105,0.13,5397,1328417.58,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NVDA,NVIDIA Corp,67066G104,13.02,561202,129345837,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NVR,NVR Inc,62944T105,0.04,62,372158.1,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NWS,News Corp,65249B208,0.01,2939,93812.88,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NWSA,News Corp,65249B109,0.03,8942,259049.74,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,NXPI,NXP Semiconductors NV,N6596X109,0.14,6186,1429399.02,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ODFL,Old Dominion Freight Line Inc,679580100,0.08,4568,829777.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,OKTA,Okta Inc,679295105,0.09,4049,891630.29,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,OMC,Omnicom Group Inc,681919106,0.05,6738,515120.1,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ON,ON Semiconductor Corp,682189105,0.08,9621,764003.61,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,OXY,Occidental Petroleum Corp,674599105,0.11,17753,1070150.84,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,P,Everpure Inc,74624M102,0.12,7635,1149601.95,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PANW,Palo Alto Networks Inc,697435105,0.79,19744,7867984,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PCAR,PACCAR Inc,693718108,0.14,12649,1387089.34,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PFE,Pfizer Inc,717081103,0.39,139427,3878859.14,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PG,Procter & Gamble Co/The,742718109,0.87,57099,8598538.41,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PHM,PulteGroup Inc,745867101,0.05,4555,517129.15,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PKG,Packaging Corp of America,695156109,0.05,2125,488622.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PPG,PPG Industries Inc,693506107,0.06,5461,575917.06,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PSX,Phillips 66,,0.28,9815,2763904,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,PWR,Quanta Services Inc,,0.25,3652,2502825.16,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,Q,Qnity Electronics Inc,74743L100,0.07,5131,649995.08,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,QCOM,QUALCOMM Inc,,0.46,25834,4547042.34,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,RBLX,ROBLOX Corp,,0.07,15549,707790.48,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,REGN,Regeneron Pharmaceuticals Inc,75886F107,0.18,2428,1795675.96,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,RMD,ResMed Inc,,0.08,3555,806025.15,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ROK,Rockwell Automation Inc,,0.12,2750,1193885,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ROL,Rollins Inc,,0.02,7274,234659.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ROP,Roper Technologies Inc,,0.09,2416,879979.68,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ROST,Ross Stores Inc,,0.18,7734,1741696.8,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SCCO,Southern Copper Corp,84265V105,0.05,2280.476,453039.36,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SLB,SLB Ltd,,0.18,36609,1793108.82,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SMCI,Super Micro Computer Inc,86800U302,0.06,13638,583297.26,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SNA,Snap-on Inc,833034101,0.04,1240,445011.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SNDK,Sandisk Corp,80004C200,0.58,3560,5729677.6,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SNPS,Synopsys Inc,871607107,0.23,4559,2269242.25,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SRE,Sempra,816851109,0.13,16008,1281920.64,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,STE,STERIS PLC,G8473T100,0.05,2395,504770.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,STLD,Steel Dynamics Inc,,0.08,3299,772526.83,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,STX,Seagate Technology Holdings PLC,G7997R103,0.43,5485,4249915.13,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SW,Smurfit Westrock PLC,G8267P108,0.05,12789,530104.05,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,SYK,Stryker Corp,,0.24,8468,2345381.96,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,T,AT&T Inc,00206R102,0.41,163596,4023234.63,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TEL,TE Connectivity PLC,G87052109,0.15,7149,1532102.19,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TER,Teradyne Inc,880770102,0.15,3833,1528293.76,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TJX,TJX Cos Inc/The,872540109,0.38,27089,3758598.75,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TPL,Texas Pacific Land Corp,88262P102,0.05,1439,514845.42,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TPR,Tapestry Inc,876030107,0.06,4951,573424.82,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TSCO,Tractor Supply Co,892356106,0.04,12872,430954.56,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TSLA,Tesla Inc,88160R101,2.70,71532,26824500,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TT,Trane Technologies PLC,G8994E103,0.26,5409,2541905.46,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TTWO,Take-Two Interactive Software Inc,874054109,0.09,4483,938605.71,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TWLO,Twilio Inc,90138F102,0.10,3618,997735.86,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,TXN,Texas Instruments Inc,882508104,0.65,22266,6417061.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,UAL,United Airlines Holdings Inc,910047109,0.02,1989,213698.16,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,UBER,Uber Technologies Inc,90353T100,0.34,47971,3369483.04,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,UI,Ubiquiti Inc,90353W103,0.01,103,66105.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ULTA,ULTA BEAUTY INC,90384S303,0.06,1051,592984.71,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,UPS,United Parcel Service Inc,911312106,0.17,18285,1721167.05,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,VLO,Valero Energy Corp,91913Y100,0.31,7024,3117251.2,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,VLTO,Veralto Corp,92338C103,0.06,6009,579748.32,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,VMC,Vulcan Materials Co,929160109,0.08,3174,781629.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,VRT,Vertiv Holdings Co,92537N108,0.23,9390,2288624.7,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,VRTX,Vertex Pharmaceuticals Inc,92532F100,0.32,6223,3131724.75,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,VYLR,Vylor Inc,92892R108,0.12,16456,1197832.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WAB,Westinghouse Air Brake Technologies Corp,929740108,0.12,4128,1159142.4,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WAT,Waters Corp,941848103,0.10,2405,1032057.65,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WDAY,Workday Inc,98138H101,0.09,4816,904492.96,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WDC,Western Digital Corp,958102105,0.33,8414,3309310.34,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WELL,Welltower Inc,95040Q104,0.40,17674,3942008.96,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WSM,Williams-Sonoma Inc,969904101,0.07,2830,676370,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WST,West Pharmaceutical Services Inc,955306105,0.06,1712,621918.24,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,WY,Weyerhaeuser Co,962166104,0.03,17632,338005.44,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,XOM,ExxonMobil Holdings Corp,30233Q108,1.71,100815,16987327.5,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,XYL,Xylem Inc/NY,98419M100,0.06,5703,581648.97,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
-HLAL,ZBH,ZIMMER BIOMET HOLDINGS INC,98956P102,0.04,4741,421380.08,2026-10-09,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,A,Agilent Technologies Inc,00846U101,0.12,6916,1179454.64,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,AAPL,Apple Inc,,11.88,351402,118295969.3,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ABT,Abbott Laboratories,,0.42,42430,4226028,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ADBE,Adobe Inc,00724F101,0.24,9728,2356802.56,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ADI,Analog Devices Inc,,0.49,11950,4853970.5,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ADM,Archer-Daniels-Midland Co,,0.09,11743,938148.27,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ADSK,Autodesk Inc,,0.12,5167,1216053.45,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,AMAT,Applied Materials Inc,,0.99,19409,9840945.27,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,AMD,Advanced Micro Devices Inc,,2.43,39827,24218798.7,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ATO,Atmos Energy Corp,,0.07,4036,652459.76,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,AVGO,Broadcom Inc,11135F101,4.13,113913,41184106.02,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,AXON,Axon Enterprise Inc,05464C101,0.08,1890,799262.1,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,BDX,Becton Dickinson & Co,,0.12,6732,1237005,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,BIIB,Biogen Inc,09062X103,0.08,3606,813910.26,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,BKR,Baker Hughes Co,05722G100,0.14,24310,1378377,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,BSX,Boston Scientific Corp,101137107,0.16,36309,1551483.57,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,BURL,Burlington Stores Inc,122017106,0.04,1531,424041.07,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CAH,Cardinal Health Inc,14149Y108,0.14,5730,1361276.1,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CARR,Carrier Global Corp,14448C104,0.11,19120,1062307.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CBRE,CBRE Group Inc,12504L109,0.09,7147,934827.6,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CDNS,Cadence Design Systems Inc,127387108,0.24,6750,2381670,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CDW,CDW Corp/DE,12514G108,0.04,3125,444281.25,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CHD,Church & Dwight Co Inc,171340102,0.06,5799,568939.89,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CIEN,Ciena Corp,171779309,0.16,3444,1549007.88,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CMI,Cummins Inc,231021106,0.18,3380,1769058.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,COHR,Coherent Corp,19247G107,0.14,4572,1429298.64,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,COP,ConocoPhillips,20825C104,0.40,29860,4004226,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,COR,Cencora Inc,,0.15,4570,1479994.5,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CRH,CRH PLC,G25508105,0.13,16370,1334809.8,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CRM,Salesforce Inc,79466L302,0.45,19464,4459786.32,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CSCO,Cisco Systems Inc,17275R102,1.15,96746,11453758.94,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CTAS,Cintas Corp,,0.17,8347,1689516.27,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CTVA,Corteva Inc,22052L104,0.02,16456,217877.44,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CVNA,Carvana Co,,0.11,16845,1073531.85,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,CVX,Chevron Corp,,0.97,45430,9630251.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DAL,Delta Air Lines Inc,247361702,0.03,4030,331145.1,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DD,DuPont de Nemours Inc,26614N201,0.04,3344.333333,434763.33,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DELL,Dell Technologies Inc,24703L202,0.43,7370,4319262.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DGX,Quest Diagnostics Inc,74834L100,0.06,2704,624542.88,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DHI,DR Horton Inc,23331A109,0.08,6068,818451.84,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DHR,Danaher Corp,,0.34,15473,3401120.13,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DLR,Digital Realty Trust Inc,253868103,0.16,9076,1622425.76,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DLTR,Dollar Tree Inc,256746108,0.06,4700,557608,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DOV,Dover Corp,260003108,0.06,3263,616152.29,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DOW,Dow Inc,260557103,0.05,17641,501357.22,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DVN,Devon Energy Corp,25179M103,0.13,27598,1331879.48,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,DXCM,Dexcom Inc,252131107,0.08,9184,772466.24,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EBAY,eBay Inc,278642103,0.11,9814,1101032.66,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ECL,Ecolab Inc,278865100,0.17,6072,1711271.76,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EL,Estee Lauder Cos Inc/The,,0.06,6040,592222,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EMR,Emerson Electric Co,291011104,0.22,13757,2226295.31,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EOG,EOG Resources Inc,26875P101,0.19,13109,1942229.44,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EW,Edwards Lifesciences Corp,,0.12,13956,1189190.76,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EXE,Expand Energy Corp,165167735,0.05,5388,475329.36,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,EXPD,Expeditors International of Washington Inc,,0.06,3190,616435.6,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FAST,Fastenal Co,,0.14,28126,1427394.5,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FDX,FedEx Corp,31428X106,0.16,5361,1563857.31,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FERG,Ferguson Enterprises Inc,31488V107,0.10,4682,1030227.28,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FFIV,F5 Inc,,0.07,1383,663604.89,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FIX,Comfort Systems USA Inc,199908104,0.15,851,1460052.19,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FLEX,Flex Ltd,Y2573F102,0.11,8967,1074515.61,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FSLR,First Solar Inc,,0.04,2488,442416.16,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FTV,Fortive Corp,34959J108,0.04,7451,426644.26,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FWONA,Liberty Media Corp,,0.01,578,50095.26,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,FWONK,Liberty Media Corp,531229755,0.05,5319,500198.76,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GEHC,GE HealthCare Technologies Inc,36266G107,0.07,11121,731094.54,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GEV,GE Vernova Inc,36828A101,0.66,6586,6617151.78,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GFS,GLOBALFOUNDRIES Inc,G39387108,0.01,3084,148772.16,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GLW,Corning Inc,219350105,0.30,19356,3032698.08,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GOOG,Alphabet Inc,02079K107,4.07,116426,40499948.36,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GOOGL,Alphabet Inc,02079K305,5.04,142679,50174497.14,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GPC,Genuine Parts Co,372460105,0.04,3363,427168.26,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GRMN,Garmin Ltd,H2906T109,0.11,4021,1079075.56,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,GWW,WW Grainger Inc,384802104,0.14,1064,1372336.56,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,HAL,Halliburton Co,,0.07,20397,663922.35,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,HPE,Hewlett Packard Enterprise Co,42824C109,0.24,32425,2381940.5,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,HPQ,HP Inc,40434L105,0.07,22375,675725,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,HSY,Hershey Co/The,427866108,0.06,3531,574634.94,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,IDXX,IDEXX Laboratories Inc,45168D104,0.10,1933,1001294,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,IEX,IDEX Corp,45167R104,0.04,1811,424299.19,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,IFF,International Flavors & Fragrances Inc,459506101,0.05,6288,531650.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ILMN,Illumina Inc,452327109,0.10,3720,1034792.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,INTC,Intel Corp,458140100,1.18,111879,11713731.3,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,IP,International Paper Co,460146103,0.04,12846,412613.52,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,IR,Ingersoll Rand Inc,45687V106,0.08,9583,754661.25,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ISRG,Intuitive Surgical Inc,46120E602,0.37,8631,3659198.76,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,J,Jacobs Solutions Inc,46982L108,0.04,2860,397969,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,JBHT,JB Hunt Transport Services Inc,445658107,0.04,1839,421609.14,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,JBL,Jabil Inc,466313103,0.08,2549,780707.72,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,JCI,Johnson Controls International plc,G51502105,0.23,14836,2335779.84,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,JNJ,Johnson & Johnson,478160104,1.55,59003,15425744.32,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,KLAC,KLA CORP,482480100,0.63,32030,6264107.1,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,KMB,Kimberly-Clark Corp,494368103,0.08,8085,789015.15,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,KO,Coca-Cola Co/The,191216100,0.84,95172,8379894.6,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,KVUE,Kenvue Inc,49177J102,0.08,46420,821634,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LEN,Lennar Corp,526057104,0.04,4894,375320.86,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LEN/B,Lennar Corp,526057302,0.00,213,16192.26,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LH,Labcorp Holdings Inc,504922105,0.06,2006,626172.9,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LIN,Linde PLC,G54950103,0.55,11290,5461311.7,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LLY,Eli Lilly & Co,532457108,2.30,19400,22877838,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LRCX,Lam Research Corp,512807306,0.98,30602,9757141.68,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LUV,Southwest Airlines Co,844741108,0.01,2997,124855.02,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,LYB,LyondellBasell Industries NV,N53745100,0.04,6316,379149.48,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MBGL,Mobility Global Inc,60744M106,0.01,7235,131821.7,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MCK,McKesson Corp,58155Q103,0.27,2869,2693531.96,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MDLN,Medline Inc,58507V107,0.04,10981,398171.06,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MDLZ,Mondelez International Inc,609207105,0.19,31433,1898867.53,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MDT,Medtronic PLC,G5960L103,0.28,31406,2778802.88,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,META,Meta Platforms Inc,30303M102,3.88,53824,38681694.08,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MLM,Martin Marietta Materials Inc,573284106,0.07,1460,698391,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MMM,3M Co,88579Y101,0.20,12643,2022374.28,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MNST,Monster Beverage Corp,61174X109,0.15,34330,1498161.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MPC,Marathon Petroleum Corp,56585A102,0.33,7200,3276216,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MPWR,Monolithic Power Systems Inc,609839105,0.16,1157,1603937.53,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MRVL,MARVELL TECHNOLOGY INC,573874104,0.59,21357,5879154.96,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MSFT,Microsoft Corp,594918104,9.77,181923,97341539.61,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MSTR,Strategy Inc,594972408,0.13,8618,1330102.12,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MTZ,MasTec Inc,576323109,0.03,1539,327268.35,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,MU,Micron Technology Inc,595112103,2.85,27601,28401429,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NEM,Newmont Corp,651639106,0.31,25796,3039800.64,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NKE,NIKE Inc,654106103,0.10,28900,1003119,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NOW,ServiceNow Inc,81762P102,0.36,25127,3539389.22,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NTAP,NetApp Inc,64110D104,0.11,4818,1142588.7,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NUE,Nucor Corp,670346105,0.14,5397,1351031.01,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NVDA,NVIDIA Corp,67066G104,12.92,561202,128672394.6,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NVR,NVR Inc,62944T105,0.04,62,365747.92,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NWS,News Corp,65249B208,0.01,2939,94077.39,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NWSA,News Corp,65249B109,0.03,8942,260391.04,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,NXPI,NXP Semiconductors NV,N6596X109,0.14,6186,1407438.72,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ODFL,Old Dominion Freight Line Inc,679580100,0.08,4568,831238.96,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,OKTA,Okta Inc,679295105,0.09,4049,939894.37,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,OMC,Omnicom Group Inc,681919106,0.05,6738,515322.24,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ON,ON Semiconductor Corp,682189105,0.07,9621,745916.13,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,OXY,Occidental Petroleum Corp,674599105,0.11,17753,1067132.83,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,P,Everpure Inc,74624M102,0.12,7635,1179531.15,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PANW,Palo Alto Networks Inc,697435105,0.83,19744,8268392.32,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PCAR,PACCAR Inc,693718108,0.14,12649,1366597.96,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PFE,Pfizer Inc,717081103,0.40,139427,3942995.56,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PG,Procter & Gamble Co/The,742718109,0.87,57099,8635081.77,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PHM,PulteGroup Inc,745867101,0.05,4555,510706.6,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PKG,Packaging Corp of America,695156109,0.05,2125,489833.75,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PPG,PPG Industries Inc,693506107,0.06,5461,567725.56,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PSX,Phillips 66,,0.27,9815,2730336.7,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,PWR,Quanta Services Inc,,0.26,3652,2578092.88,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,Q,Qnity Electronics Inc,74743L100,0.07,5131,649584.6,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,QCOM,QUALCOMM Inc,,0.46,25834,4533867,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,RBLX,ROBLOX Corp,,0.08,15549,747751.41,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,REGN,Regeneron Pharmaceuticals Inc,75886F107,0.18,2428,1812599.12,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,RMD,ResMed Inc,,0.08,3555,817827.75,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ROK,Rockwell Automation Inc,,0.12,2750,1189622.5,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ROL,Rollins Inc,,0.02,7274,232622.52,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ROP,Roper Technologies Inc,,0.09,2416,879641.44,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ROST,Ross Stores Inc,,0.17,7734,1720118.94,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SCCO,Southern Copper Corp,84265V105,0.05,2280.476,477098.38,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SLB,SLB Ltd,,0.18,36609,1792010.55,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SMCI,Super Micro Computer Inc,86800U302,0.06,13638,570818.49,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SNA,Snap-on Inc,833034101,0.04,1240,446858.8,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SNDK,Sandisk Corp,80004C200,0.57,3560,5631279.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SNPS,Synopsys Inc,871607107,0.23,4559,2325044.41,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SRE,Sempra,816851109,0.13,16008,1302090.72,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,STE,STERIS PLC,G8473T100,0.05,2395,513488,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,STLD,Steel Dynamics Inc,,0.08,3299,786415.62,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,STX,Seagate Technology Holdings PLC,G7997R103,0.43,5485,4294755,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SW,Smurfit Westrock PLC,G8267P108,0.05,12789,528057.81,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,SYK,Stryker Corp,,0.24,8468,2348430.44,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,T,AT&T Inc,00206R102,0.36,163596,3628559.28,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TEL,TE Connectivity PLC,G87052109,0.16,7149,1560555.21,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TER,Teradyne Inc,880770102,0.15,3833,1543472.44,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TJX,TJX Cos Inc/The,872540109,0.38,27089,3758869.64,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TPL,Texas Pacific Land Corp,88262P102,0.05,1439,519450.22,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TPR,Tapestry Inc,876030107,0.06,4951,575504.24,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TSCO,Tractor Supply Co,892356106,0.04,12872,433786.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TSLA,Tesla Inc,88160R101,2.75,71532,27375296.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TT,Trane Technologies PLC,G8994E103,0.26,5409,2579984.82,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TTWO,Take-Two Interactive Software Inc,874054109,0.10,4483,956851.52,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TWLO,Twilio Inc,90138F102,0.11,3618,1047302.46,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,TXN,Texas Instruments Inc,882508104,0.63,22266,6317754.84,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,UAL,United Airlines Holdings Inc,910047109,0.02,1989,213728,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,UBER,Uber Technologies Inc,90353T100,0.34,47971,3430406.21,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,UI,Ubiquiti Inc,90353W103,0.01,103,67700.87,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ULTA,ULTA BEAUTY INC,90384S303,0.06,1051,599458.87,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,UPS,United Parcel Service Inc,911312106,0.17,18285,1729212.45,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,VLO,Valero Energy Corp,91913Y100,0.31,7024,3046660,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,VLTO,Veralto Corp,92338C103,0.06,6009,582452.37,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,VMC,Vulcan Materials Co,929160109,0.08,3174,776296.92,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,VRT,Vertiv Holdings Co,92537N108,0.23,9390,2279704.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,VRTX,Vertex Pharmaceuticals Inc,92532F100,0.32,6223,3174227.84,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,VYLR,Vylor Inc,92892R108,0.12,16456,1203756.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WAB,Westinghouse Air Brake Technologies Corp,929740108,0.12,4128,1178255.04,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WAT,Waters Corp,941848103,0.10,2405,1043216.85,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WDAY,Workday Inc,98138H101,0.09,4816,898617.44,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WDC,Western Digital Corp,958102105,0.34,8414,3342713.92,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WELL,Welltower Inc,95040Q104,0.40,17674,3984956.78,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WSM,Williams-Sonoma Inc,969904101,0.07,2830,684237.4,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WST,West Pharmaceutical Services Inc,955306105,0.06,1712,626592,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,WY,Weyerhaeuser Co,962166104,0.03,17632,336771.2,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,XOM,ExxonMobil Holdings Corp,30233Q108,1.71,100815,17031686.1,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,XYL,Xylem Inc/NY,98419M100,0.06,5703,585755.13,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
+HLAL,ZBH,ZIMMER BIOMET HOLDINGS INC,98956P102,0.04,4741,422612.74,2026-10-12,https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0
 MNZL,A,Agilent Technologies Inc,00846U101,0.14,252,,2026-07-31,https://manzilfunds.com/
 MNZL,AA,Alcoa Corp,013872106,0.05,261,,2026-07-31,https://manzilfunds.com/
 MNZL,AAOI,Applied Optoelectronics Inc,03823U102,0.02,59,,2026-07-31,https://manzilfunds.com/
@@ -685,219 +685,219 @@ MNZL,ZBH,ZIMMER BIOMET HOLDINGS INC,98956P102,0.06,169,,2026-07-31,https://manzi
 MNZL,ZBRA,Zebra Technologies Corp,989207105,0.05,43,,2026-07-31,https://manzilfunds.com/
 MNZL,ZM,Zoom Communications Inc,98980L101,0.07,201,,2026-07-31,https://manzilfunds.com/
 MNZL,ZS,Zscaler Inc,98980G102,0.05,84,,2026-07-31,https://manzilfunds.com/
-SPUS,A,Agilent Technologies Inc,00846U101,0.12,24737,4160021.29,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AAPL,Apple Inc,037833100,12.48,1236000,420759120.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ABBV,AbbVie Inc,00287Y109,1.22,150710,41056418.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ABT,Abbott Laboratories,002824100,0.43,147582,14535351.18,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ACN,Accenture PLC,G1151C101,0.32,51985,10831594.6,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ADBE,Adobe Inc,00724F101,0.24,34208,8245838.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ADI,Analog Devices Inc,032654105,0.49,41100,16683723.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ADM,Archer-Daniels-Midland Co,039483102,0.10,41157,3393394.65,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ADSK,Autodesk Inc,052769106,0.13,18304,4275814.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ALB,Albemarle Corp,012653101,0.03,9683,988634.3,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ALGN,Align Technology Inc,016255101,0.02,5322,750561.66,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ALLE,Allegion plc,G0176J109,0.03,7141,1071078.59,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AMAT,Applied Materials Inc,038222105,1.02,67634,34464257.38,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AMD,Advanced Micro Devices Inc,007903107,2.55,138719,86100108.92,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ANET,Arista Networks Inc,040413205,0.55,87471,18453756.87,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AOS,A O Smith Corp,831865209,0.02,9440,533926.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,APD,Air Products and Chemicals Inc,009158106,0.15,18745,5218233.1,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AVGO,Broadcom Inc,11135F101,4.32,404292,145601720.88,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AVY,Avery Dennison Corp,053611109,0.03,6767,1134284.54,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,AZO,AutoZone Inc,053332102,0.10,1148,3341299.92,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,BBY,Best Buy Co Inc,086516101,0.04,16290,1440036.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,BDX,Becton Dickinson & Co,075887109,0.13,24809,4533844.75,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,BE,Bloom Energy Corp,093712107,0.20,25016,6824865.12,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,BIIB,Biogen Inc,09062X103,0.08,12099,2642784.57,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,BKNG,Booking Holdings Inc,09857L108,0.31,65609,10495471.73,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,BSX,Boston Scientific Corp,101137107,0.16,128306,5393984.24,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CAH,Cardinal Health Inc,14149Y108,0.15,20497,4897963.12,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CARR,Carrier Global Corp,14448C104,0.11,69384,3873708.72,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CDNS,Cadence Design Systems Inc,127387108,0.24,23181,8086460.04,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CDW,CDW Corp/DE,12514G108,0.05,11344,1586798.72,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CEG,Constellation Energy Corp,21037T109,0.23,27100,7725397.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CF,CF Industries Holdings Inc,125269100,0.05,13802,1567631.16,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CHD,Church & Dwight Co Inc,171340102,0.06,20867,2039331.91,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CHRW,CH Robinson Worldwide Inc,12541W209,0.04,9743,1377075.62,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CIEN,Ciena Corp,171779309,0.15,11955,5091993.15,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CL,Colgate-Palmolive Co,194162103,0.18,70057,6172021.7,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CMI,Cummins Inc,231021106,0.18,11632,6053292.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,COHR,Coherent Corp,19247G107,0.14,16103,4868742.05,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,COO,Cooper Cos Inc/The,216648501,0.03,16656,904420.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,COP,ConocoPhillips,20825C104,0.41,103204,13848944.76,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,COR,Cencora Inc,03073E105,0.16,16506,5304203.1,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CPRT,Copart Inc,217204106,0.06,76375,2098785.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CRH,CRH PLC,G25508105,0.14,56971,4664785.48,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CRL,Charles River Laboratories International Inc,159864107,0.03,3401,1013498.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CRM,Salesforce Inc,79466L302,0.46,68809,15674690.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CRWD,Crowdstrike Holdings Inc,22788C105,0.67,85952,22606235.52,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CSCO,Cisco Systems Inc,17275R102,1.15,337468,38771698.52,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CSGP,CoStar Group Inc,22160N109,0.03,36104,1076260.24,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CSX,CSX Corp,126408103,0.23,163462,7738291.08,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CTAS,Cintas Corp,172908105,0.18,29533,5939676.96,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,CTSH,Cognizant Technology Solutions Corp,192446102,0.08,42723,2563807.23,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DASH,DoorDash Inc,25809K105,0.18,32229,6178621.59,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DD,DuPont de Nemours Inc,26614N201,0.05,11969,1585697.28,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DECK,Deckers Outdoor Corp,243537107,0.03,12311,1016396.16,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DHI,DR Horton Inc,23331A109,0.09,23323,3167729.86,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DHR,Danaher Corp,235851102,0.35,54685,11891800.1,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DOV,Dover Corp,260003108,0.07,11610,2193825.6,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,DXCM,Dexcom Inc,252131107,0.08,33891,2860739.31,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EBAY,eBay Inc,278642103,0.11,34020,3809559.6,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ECL,Ecolab Inc,278865100,0.19,22322,6287884.18,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EFX,Equifax Inc,294429105,0.04,10021,1458456.34,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EL,Estee Lauder Cos Inc/The,518439104,0.06,20300,1914696.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EMR,Emerson Electric Co,291011104,0.23,49090,7808255.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EOG,EOG Resources Inc,26875P101,0.20,45106,6698692.06,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EQIX,Equinix Inc,29444U700,0.24,7986,8075123.76,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EW,Edwards Lifesciences Corp,28176E108,0.13,50267,4234492.08,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EXPD,Expeditors International of Washington Inc,302130109,0.07,11594,2245873.74,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,EXPE,Expedia Group Inc,30212P303,0.08,9821,2652946.73,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FANG,Diamondback Energy Inc,25278X109,0.09,16402,3143935.36,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FAST,Fastenal Co,311900104,0.15,99287,5013000.63,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FCX,Freeport-McMoRan Inc,35671D857,0.26,125183,8905518.62,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FDXF,Fedex Freight Holding Co Inc,314352105,0.03,9145,1057619.25,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FERG,Ferguson Enterprises Inc,31488V107,0.11,16388,3551771.24,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FFIV,F5 Inc,315616102,0.07,4764,2199348.24,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FICO,Fair Isaac Corp,303250104,0.03,1404,993231.72,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FIX,Comfort Systems USA Inc,199908104,0.14,2790,4760828.1,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FLEX,Flex Ltd,Y2573F102,0.10,30795,3533418.3,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FSLR,First Solar Inc,336433107,0.05,9165,1639160.25,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,FTNT,Fortinet Inc,34959E109,0.31,54615,10327696.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GDDY,GoDaddy Inc,380237107,0.04,11866,1224452.54,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GEHC,GE HealthCare Technologies Inc,36266G107,0.07,39077,2509524.94,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GEV,GE Vernova Inc,36828A101,0.67,22639,22624284.65,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GILD,Gilead Sciences Inc,375558103,0.46,105192,15473743.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GLW,Corning Inc,219350105,0.30,67149,10262381.67,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GNRC,Generac Holdings Inc,368736104,0.03,4842,1086544.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GOOGL,Alphabet Inc,02079K305,5.13,496800,173030472.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GPC,Genuine Parts Co,372460105,0.04,11690,1498307.3,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GRMN,Garmin Ltd,H2906T109,0.11,13999,3757891.56,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,GWW,WW Grainger Inc,384802104,0.12,3322,4214521.74,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,HAL,Halliburton Co,406216101,0.07,74384,2422686.88,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,HD,Home Depot Inc/The,437076102,0.74,85005,25116427.35,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,HSY,Hershey Co/The,427866108,0.06,12169,1977949.26,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,HUBB,Hubbell Inc,443510607,0.06,4571,2173053.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,IBM,International Business Machines Corp,459200101,0.53,79525,18021160.25,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,IDXX,IDEXX Laboratories Inc,45168D104,0.10,6873,3526811.22,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,IEX,IDEX Corp,45167R104,0.04,5674,1314949.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ILMN,Illumina Inc,452327109,0.10,12787,3383056.59,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,INCY,Incyte Corp,45337C102,0.05,13738,1548959.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,IR,Ingersoll Rand Inc,45687V106,0.07,31405,2449590.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ISRG,Intuitive Surgical Inc,46120E602,0.37,30388,12623479.08,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,IT,Gartner Inc,366651107,0.04,6709,1311005.69,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ITW,Illinois Tool Works Inc,452308109,0.18,22851,6048888.21,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,JBHT,JB Hunt Transport Services Inc,445658107,0.05,6775,1547545.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,JBL,Jabil Inc,466313103,0.08,9170,2743297.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,JCI,Johnson Controls International plc,G51502105,0.24,52776,8127504.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,JNJ,Johnson & Johnson,478160104,1.55,203935,52305248.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,KLAC,KLA CORP,482480100,0.64,110184,21675396.48,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,KMB,Kimberly-Clark Corp,494368103,0.08,28024,2739065.76,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,KVUE,Kenvue Inc,49177J102,0.09,167462,2969101.26,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LH,Labcorp Holdings Inc,504922105,0.07,7029,2208511.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LII,Lennox International Inc,526107107,0.03,2535,916503.9,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LIN,Linde PLC,G54950103,0.56,38910,18742947.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LITE,Lumentum Holdings Inc,55024U109,0.23,7507,7871840.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LLY,Eli Lilly & Co,532457108,2.36,67969,79496542.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LOW,Lowe's Cos Inc,548661107,0.27,47975,9060078.75,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LRCX,Lam Research Corp,512807306,1.01,106347,34093784.73,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,LULU,Lululemon Athletica Inc,550021109,0.03,9322,863962.96,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MAS,Masco Corp,574599106,0.04,18162,1262259.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MCHP,Microchip Technology Inc,595017104,0.11,46927,3543927.04,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MCK,McKesson Corp,58155Q103,0.28,10204,9492271.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MDLZ,Mondelez International Inc,609207105,0.20,112366,6817245.22,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MDT,Medtronic PLC,G5960L103,0.29,111769,9807729.75,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MKC,McCormick & Co Inc/MD,579780206,0.03,21212,974479.28,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MLM,Martin Marietta Materials Inc,573284106,0.07,4899,2359211.43,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MMM,3M Co,88579Y101,0.21,44096,7213223.68,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MNST,Monster Beverage Corp,61174X109,0.16,121678,5311244.7,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MPWR,Monolithic Power Systems Inc,609839105,0.16,4054,5553169.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MRK,Merck & Co Inc,58933Y105,0.88,209192,29784756.96,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MRVL,MARVELL TECHNOLOGY INC,573874104,0.60,73886,20289095.6,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MSFT,Microsoft Corp,594918104,9.75,628867,328652182.87,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MTD,Mettler-Toledo International Inc,592688105,0.08,1686,2578669.56,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,MU,Micron Technology Inc,595112103,2.95,95976,99415779.84,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NDSN,Nordson Corp,655663102,0.04,4604,1504909.48,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NEM,Newmont Corp,651639106,0.31,90396,10445257.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NKE,NIKE Inc,654106103,0.11,102788,3570855.12,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NOW,ServiceNow Inc,81762P102,0.37,89856,12557376.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NSC,Norfolk Southern Corp,655844108,0.18,18901,5991427.99,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NTAP,NetApp Inc,64110D104,0.12,16837,3881433.61,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NUE,Nucor Corp,670346105,0.15,20120,4952336.8,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NVDA,NVIDIA Corp,67066G104,14.01,2049524,472374291.52,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,NXPI,NXP Semiconductors NV,N6596X109,0.15,21210,4900994.7,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ODFL,Old Dominion Freight Line Inc,679580100,0.09,15958,2898770.7,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ON,ON Semiconductor Corp,682189105,0.09,36114,2867812.74,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ORCL,Oracle Corp,68389X105,0.57,143227,19362858.13,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ORLY,O'Reilly Automotive Inc,67103H107,0.18,70176,6035837.76,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,OTIS,Otis Worldwide Corp,68902V107,0.07,34013,2248599.43,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,OXY,Occidental Petroleum Corp,674599105,0.11,61456,3704567.68,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,P,Everpure Inc,74624M102,0.13,28209,4247429.13,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PANW,Palo Alto Networks Inc,697435105,0.81,68631,27349453.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PEP,PepsiCo Inc,713448108,0.44,115706,14849708.04,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PG,Procter & Gamble Co/The,742718109,0.89,198585,29904915.15,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PHM,PulteGroup Inc,745867101,0.06,16658,1891182.74,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PKG,Packaging Corp of America,695156109,0.05,7310,1680861.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PNR,Pentair PLC,G7S00T104,0.02,13931,728591.3,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PODD,Insulet Corp,45784P101,0.02,5429,730037.63,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PPG,PPG Industries Inc,693506107,0.06,18975,2001103.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PTC,PTC Inc,69370C100,0.06,9801,1898747.73,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,PWR,Quanta Services Inc,74762E102,0.25,12447,8530302.51,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,Q,Qnity Electronics Inc,74743L100,0.07,17424,2207272.32,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,QCOM,QUALCOMM Inc,747525103,0.46,88751,15621063.51,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,RDDT,Reddit Inc,75734B100,0.05,10905,1706305.35,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,REGN,Regeneron Pharmaceuticals Inc,75886F107,0.18,8135,6016401.95,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,RL,Ralph Lauren Corp,751212101,0.03,2926,1074983.14,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,RMD,ResMed Inc,761152107,0.08,12104,2744339.92,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ROK,Rockwell Automation Inc,773903109,0.12,9425,4091769.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ROL,Rollins Inc,775711104,0.02,24551,792015.26,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ROP,Roper Technologies Inc,776696106,0.10,9178,3342902.94,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ROST,Ross Stores Inc,778296103,0.19,27846,6270919.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,RSG,Republic Services Inc,760759100,0.11,16823,3647899.32,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,RVTY,Revvity Inc,714046109,0.04,9679,1472756.64,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,SHW,Sherwin-Williams Co/The,824348106,0.19,20111,6456234.33,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,SLB,SLB Ltd,806857108,0.19,130298,6381996.04,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,SNDK,Sandisk Corp,80004C200,0.59,12345,19868783.7,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,SNPS,Synopsys Inc,871607107,0.23,15908,7918207.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,STE,STERIS PLC,G8473T100,0.05,7771,1637815.96,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,STLD,Steel Dynamics Inc,858119100,0.08,11656,2729485.52,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,STX,Seagate Technology Holdings PLC,G7997R103,0.43,18681,14474505.83,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,SWKS,Skyworks Solutions Inc,83088M102,0.03,12270,990802.5,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,SYK,Stryker Corp,863667101,0.24,29577,8191941.69,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TECH,Bio-Techne Corp,09073M104,0.03,13553,981914.85,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TEL,TE Connectivity PLC,G87052109,0.16,25294,5420757.14,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TER,Teradyne Inc,880770102,0.16,13726,5472830.72,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TGT,Target Corp,87612E106,0.18,38897,6019699.72,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TJX,TJX Cos Inc/The,872540109,0.39,93707,13001846.25,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TMO,Thermo Fisher Scientific Inc,883556102,0.61,31477,20522374.46,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TPL,Texas Pacific Land Corp,88262P102,0.05,4857,1737737.46,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TPR,Tapestry Inc,876030107,0.06,18007,2085570.74,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TRMB,Trimble Inc,896239100,0.04,20492,1226446.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TSCO,Tractor Supply Co,892356106,0.05,45552,1525080.96,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TSLA,Tesla Inc,88160R101,2.66,239478,89804250.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TT,Trane Technologies PLC,G8994E103,0.26,18752,8812314.88,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TWLO,Twilio Inc,90138F102,0.11,12979,3579218.83,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TXN,Texas Instruments Inc,882508104,0.66,76731,22113874.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,TYL,Tyler Technologies Inc,902252105,0.03,3117,1032194.55,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,UBER,Uber Technologies Inc,90353T100,0.36,171880,12072851.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ULTA,ULTA BEAUTY INC,90384S303,0.06,3385,1909850.85,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,UNP,Union Pacific Corp,907818108,0.41,50242,13977324.4,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,UPS,United Parcel Service Inc,911312106,0.18,63364,5964453.32,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,URI,United Rentals Inc,911363109,0.16,5185,5445027.75,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,VLTO,Veralto Corp,92338C103,0.06,20965,2022703.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,VMC,Vulcan Materials Co,929160109,0.08,11364,2798498.64,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,VRSN,VeriSign Inc,92343E102,0.06,6889,2051475.31,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,VRT,Vertiv Holdings Co,92537N108,0.24,32740,7979720.2,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,VRTX,Vertex Pharmaceuticals Inc,92532F100,0.32,21589,10864664.25,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,VYLR,Vylor Inc,92892R108,0.13,58873,4285365.67,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WAB,Westinghouse Air Brake Technologies Corp,929740108,0.12,14267,4006173.6,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WAT,Waters Corp,941848103,0.10,7943,3408579.59,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WDAY,Workday Inc,98138H101,0.10,18445,3464155.45,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WELL,Welltower Inc,95040Q104,0.39,59433,13255936.32,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WM,Waste Management Inc,94106L109,0.20,31646,6648824.6,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WSM,Williams-Sonoma Inc,969904101,0.07,9943,2376377.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WST,West Pharmaceutical Services Inc,955306105,0.06,5490,1994352.3,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,WY,Weyerhaeuser Co,962166104,0.04,62956,1206866.52,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,XOM,ExxonMobil Holdings Corp,30233Q108,1.75,349756,58933886.0,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,XYL,Xylem Inc/NY,98419M100,0.06,20732,2114456.68,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
-SPUS,ZBRA,Zebra Technologies Corp,989207105,0.04,3484,1331375.76,2026-10-09,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,A,Agilent Technologies Inc,00846U101,0.12,24737,4218647.98,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AAPL,Apple Inc,037833100,12.28,1236000,416087040.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ABBV,AbbVie Inc,00287Y109,1.23,150710,41666793.7,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ABT,Abbott Laboratories,002824100,0.43,147582,14699167.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ACN,Accenture PLC,G1151C101,0.32,51985,10867984.1,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ADBE,Adobe Inc,00724F101,0.24,34208,8287572.16,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ADI,Analog Devices Inc,032654105,0.49,41100,16694409.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ADM,Archer-Daniels-Midland Co,039483102,0.10,41157,3288032.73,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ADSK,Autodesk Inc,052769106,0.13,18304,4307846.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ALB,Albemarle Corp,012653101,0.03,9683,980597.41,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ALGN,Align Technology Inc,016255101,0.02,5322,759502.62,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ALLE,Allegion plc,G0176J109,0.03,7141,1074577.68,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AMAT,Applied Materials Inc,038222105,1.01,67634,34292467.02,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AMD,Advanced Micro Devices Inc,007903107,2.49,138719,84355023.9,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ANET,Arista Networks Inc,040413205,0.56,87471,18958464.54,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AOS,A O Smith Corp,831865209,0.02,9440,532227.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,APD,Air Products and Chemicals Inc,009158106,0.16,18745,5272218.7,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AVGO,Broadcom Inc,11135F101,4.31,404292,146167729.68,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AVY,Avery Dennison Corp,053611109,0.03,6767,1135637.94,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,AZO,AutoZone Inc,053332102,0.10,1148,3374947.8,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,BBY,Best Buy Co Inc,086516101,0.04,16290,1417392.9,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,BDX,Becton Dickinson & Co,075887109,0.13,24809,4558653.75,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,BE,Bloom Energy Corp,093712107,0.21,25016,7016988.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,BIIB,Biogen Inc,09062X103,0.08,12099,2730865.29,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,BKNG,Booking Holdings Inc,09857L108,0.31,65609,10519747.06,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,BSX,Boston Scientific Corp,101137107,0.16,128306,5482515.38,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CAH,Cardinal Health Inc,14149Y108,0.14,20497,4869472.29,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CARR,Carrier Global Corp,14448C104,0.11,69384,3854975.04,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CDNS,Cadence Design Systems Inc,127387108,0.24,23181,8179184.04,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CDW,CDW Corp/DE,12514G108,0.05,11344,1612776.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CEG,Constellation Energy Corp,21037T109,0.24,27100,8077697.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CF,CF Industries Holdings Inc,125269100,0.05,13802,1539475.08,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CHD,Church & Dwight Co Inc,171340102,0.06,20867,2047261.37,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CHRW,CH Robinson Worldwide Inc,12541W209,0.04,9743,1386526.33,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CIEN,Ciena Corp,171779309,0.16,11955,5377000.35,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CL,Colgate-Palmolive Co,194162103,0.18,70057,6183931.39,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CMI,Cummins Inc,231021106,0.18,11632,6088072.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,COHR,Coherent Corp,19247G107,0.15,16103,5034119.86,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,COO,Cooper Cos Inc/The,216648501,0.03,16656,905586.72,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,COP,ConocoPhillips,20825C104,0.41,103204,13839656.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,COR,Cencora Inc,03073E105,0.16,16506,5345468.1,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CPRT,Copart Inc,217204106,0.06,76375,2086565.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CRH,CRH PLC,G25508105,0.14,56971,4645415.34,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CRL,Charles River Laboratories International Inc,159864107,0.03,3401,1026387.79,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CRM,Salesforce Inc,79466L302,0.47,68809,15766206.17,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CRWD,Crowdstrike Holdings Inc,22788C105,0.70,85952,23640238.08,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CSCO,Cisco Systems Inc,17275R102,1.18,337468,39952836.52,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CSGP,CoStar Group Inc,22160N109,0.03,36104,1071205.68,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CSX,CSX Corp,126408103,0.23,163462,7725214.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CTAS,Cintas Corp,172908105,0.18,29533,5977774.53,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,CTSH,Cognizant Technology Solutions Corp,192446102,0.07,42723,2529201.6,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DASH,DoorDash Inc,25809K105,0.19,32229,6332998.5,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DD,DuPont de Nemours Inc,26614N201,0.05,11969,1556013.33,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DECK,Deckers Outdoor Corp,243537107,0.03,12311,1020458.79,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DHI,DR Horton Inc,23331A109,0.09,23323,3145806.24,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DHR,Danaher Corp,235851102,0.35,54685,12020309.85,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DOV,Dover Corp,260003108,0.06,11610,2192316.3,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,DXCM,Dexcom Inc,252131107,0.08,33891,2850572.01,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EBAY,eBay Inc,278642103,0.11,34020,3816703.8,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ECL,Ecolab Inc,278865100,0.19,22322,6291009.26,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EFX,Equifax Inc,294429105,0.04,10021,1460861.38,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EL,Estee Lauder Cos Inc/The,518439104,0.06,20300,1990415.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EMR,Emerson Electric Co,291011104,0.23,49090,7944234.7,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EOG,EOG Resources Inc,26875P101,0.20,45106,6682904.96,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EQIX,Equinix Inc,29444U700,0.24,7986,8194115.16,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EW,Edwards Lifesciences Corp,28176E108,0.13,50267,4283251.07,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EXPD,Expeditors International of Washington Inc,302130109,0.07,11594,2240424.56,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,EXPE,Expedia Group Inc,30212P303,0.08,9821,2693114.62,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FANG,Diamondback Energy Inc,25278X109,0.09,16402,3151316.26,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FAST,Fastenal Co,311900104,0.15,99287,5038815.25,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FCX,Freeport-McMoRan Inc,35671D857,0.27,125183,9224735.27,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FDXF,Fedex Freight Holding Co Inc,314352105,0.03,9145,1055973.15,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FERG,Ferguson Enterprises Inc,31488V107,0.11,16388,3606015.52,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FFIV,F5 Inc,315616102,0.07,4764,2285910.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FICO,Fair Isaac Corp,303250104,0.03,1404,937282.32,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FIX,Comfort Systems USA Inc,199908104,0.14,2790,4786775.1,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FLEX,Flex Ltd,Y2573F102,0.11,30795,3690164.85,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FSLR,First Solar Inc,336433107,0.05,9165,1629720.3,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,FTNT,Fortinet Inc,34959E109,0.31,54615,10636271.25,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GDDY,GoDaddy Inc,380237107,0.04,11866,1238217.1,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GEHC,GE HealthCare Technologies Inc,36266G107,0.08,39077,2568921.98,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GEV,GE Vernova Inc,36828A101,0.67,22639,22746082.47,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GILD,Gilead Sciences Inc,375558103,0.47,105192,15901874.64,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GLW,Corning Inc,219350105,0.31,67149,10520905.32,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GNRC,Generac Holdings Inc,368736104,0.03,4842,1089159.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GOOGL,Alphabet Inc,02079K305,5.16,496800,174704688.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GPC,Genuine Parts Co,372460105,0.04,11690,1484863.8,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GRMN,Garmin Ltd,H2906T109,0.11,13999,3756771.64,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,GWW,WW Grainger Inc,384802104,0.13,3322,4284682.38,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,HAL,Halliburton Co,406216101,0.07,74384,2421199.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,HD,Home Depot Inc/The,437076102,0.73,85005,24714353.7,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,HSY,Hershey Co/The,427866108,0.06,12169,1980383.06,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,HUBB,Hubbell Inc,443510607,0.06,4571,2167156.81,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,IBM,International Business Machines Corp,459200101,0.53,79525,18062513.25,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,IDXX,IDEXX Laboratories Inc,45168D104,0.11,6873,3560214.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,IEX,IDEX Corp,45167R104,0.04,5674,1329361.46,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ILMN,Illumina Inc,452327109,0.10,12787,3556959.79,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,INCY,Incyte Corp,45337C102,0.05,13738,1549509.02,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,IR,Ingersoll Rand Inc,45687V106,0.07,31405,2473143.75,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ISRG,Intuitive Surgical Inc,46120E602,0.38,30388,12883296.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,IT,Gartner Inc,366651107,0.04,6709,1282425.35,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ITW,Illinois Tool Works Inc,452308109,0.18,22851,6035634.63,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,JBHT,JB Hunt Transport Services Inc,445658107,0.05,6775,1553236.5,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,JBL,Jabil Inc,466313103,0.08,9170,2808587.6,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,JCI,Johnson Controls International plc,G51502105,0.25,52776,8309053.44,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,JNJ,Johnson & Johnson,478160104,1.57,203935,53316766.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,KLAC,KLA CORP,482480100,0.64,110184,21548684.88,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,KMB,Kimberly-Clark Corp,494368103,0.08,28024,2734862.16,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,KVUE,Kenvue Inc,49177J102,0.09,167462,2964077.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LH,Labcorp Holdings Inc,504922105,0.06,7029,2194102.35,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LII,Lennox International Inc,526107107,0.03,2535,903575.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LIN,Linde PLC,G54950103,0.56,38910,18821934.3,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LITE,Lumentum Holdings Inc,55024U109,0.24,7507,8282885.99,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LLY,Eli Lilly & Co,532457108,2.37,67969,80153802.63,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LOW,Lowe's Cos Inc,548661107,0.26,47975,8923350.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LRCX,Lam Research Corp,512807306,1.00,106347,33907677.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,LULU,Lululemon Athletica Inc,550021109,0.03,9322,880929.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MAS,Masco Corp,574599106,0.04,18162,1248637.5,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MCHP,Microchip Technology Inc,595017104,0.10,46927,3545334.85,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MCK,McKesson Corp,58155Q103,0.28,10204,9579923.36,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MDLZ,Mondelez International Inc,609207105,0.20,112366,6788030.06,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MDT,Medtronic PLC,G5960L103,0.29,111769,9889321.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MKC,McCormick & Co Inc/MD,579780206,0.03,21212,950509.72,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MLM,Martin Marietta Materials Inc,573284106,0.07,4899,2343436.65,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MMM,3M Co,88579Y101,0.21,44096,7053596.16,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MNST,Monster Beverage Corp,61174X109,0.16,121678,5310027.92,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MPWR,Monolithic Power Systems Inc,609839105,0.17,4054,5620019.66,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MRK,Merck & Co Inc,58933Y105,0.90,209192,30458355.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MRVL,MARVELL TECHNOLOGY INC,573874104,0.60,73886,20339338.08,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MSFT,Microsoft Corp,594918104,9.93,628867,336487865.69,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MTD,Mettler-Toledo International Inc,592688105,0.08,1686,2613283.14,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,MU,Micron Technology Inc,595112103,2.91,95976,98759304.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NDSN,Nordson Corp,655663102,0.04,4604,1510894.68,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NEM,Newmont Corp,651639106,0.31,90396,10652264.64,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NKE,NIKE Inc,654106103,0.11,102788,3567771.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NOW,ServiceNow Inc,81762P102,0.37,89856,12657116.16,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NSC,Norfolk Southern Corp,655844108,0.18,18901,6006548.79,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NTAP,NetApp Inc,64110D104,0.12,16837,3992894.55,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NUE,Nucor Corp,670346105,0.15,20120,5036639.6,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NVDA,NVIDIA Corp,67066G104,13.87,2049524,469914862.72,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,NXPI,NXP Semiconductors NV,N6596X109,0.14,21210,4825699.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ODFL,Old Dominion Freight Line Inc,679580100,0.09,15958,2903877.26,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ON,ON Semiconductor Corp,682189105,0.08,36114,2799918.42,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ORCL,Oracle Corp,68389X105,0.60,143227,20252297.8,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ORLY,O'Reilly Automotive Inc,67103H107,0.18,70176,6066715.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,OTIS,Otis Worldwide Corp,68902V107,0.07,34013,2243157.35,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,OXY,Occidental Petroleum Corp,674599105,0.11,61456,3694120.16,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,P,Everpure Inc,74624M102,0.13,28209,4358008.41,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PANW,Palo Alto Networks Inc,697435105,0.85,68631,28741290.18,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PEP,PepsiCo Inc,713448108,0.43,115706,14575484.82,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PG,Procter & Gamble Co/The,742718109,0.89,198585,30032009.55,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PHM,PulteGroup Inc,745867101,0.06,16658,1867694.96,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PKG,Packaging Corp of America,695156109,0.05,7310,1685028.1,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PNR,Pentair PLC,G7S00T104,0.02,13931,730959.57,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PODD,Insulet Corp,45784P101,0.02,5429,734435.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PPG,PPG Industries Inc,693506107,0.06,18975,1972641.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PTC,PTC Inc,69370C100,0.06,9801,1905804.45,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,PWR,Quanta Services Inc,74762E102,0.26,12447,8786835.18,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,Q,Qnity Electronics Inc,74743L100,0.07,17424,2205878.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,QCOM,QUALCOMM Inc,747525103,0.46,88751,15575800.5,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,RDDT,Reddit Inc,75734B100,0.05,10905,1743818.55,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,REGN,Regeneron Pharmaceuticals Inc,75886F107,0.18,8135,6073102.9,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,RL,Ralph Lauren Corp,751212101,0.03,2926,1086365.28,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,RMD,ResMed Inc,761152107,0.08,12104,2784525.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ROK,Rockwell Automation Inc,773903109,0.12,9425,4077160.75,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ROL,Rollins Inc,775711104,0.02,24551,785140.98,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ROP,Roper Technologies Inc,776696106,0.10,9178,3341618.02,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ROST,Ross Stores Inc,778296103,0.18,27846,6193228.86,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,RSG,Republic Services Inc,760759100,0.11,16823,3648572.24,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,RVTY,Revvity Inc,714046109,0.04,9679,1492308.22,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,SHW,Sherwin-Williams Co/The,824348106,0.19,20111,6422648.96,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,SLB,SLB Ltd,806857108,0.19,130298,6378087.1,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,SNDK,Sandisk Corp,80004C200,0.58,12345,19527567.9,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,SNPS,Synopsys Inc,871607107,0.24,15908,8112920.92,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,STE,STERIS PLC,G8473T100,0.05,7771,1666102.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,STLD,Steel Dynamics Inc,858119100,0.08,11656,2778557.28,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,STX,Seagate Technology Holdings PLC,G7997R103,0.43,18681,14627223.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,SWKS,Skyworks Solutions Inc,83088M102,0.03,12270,936814.5,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,SYK,Stryker Corp,863667101,0.24,29577,8202589.41,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TECH,Bio-Techne Corp,09073M104,0.03,13553,982050.38,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TEL,TE Connectivity PLC,G87052109,0.16,25294,5521427.26,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TER,Teradyne Inc,880770102,0.16,13726,5527185.68,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TGT,Target Corp,87612E106,0.18,38897,5976135.08,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TJX,TJX Cos Inc/The,872540109,0.38,93707,13002783.32,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TMO,Thermo Fisher Scientific Inc,883556102,0.61,31477,20712495.54,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TPL,Texas Pacific Land Corp,88262P102,0.05,4857,1753279.86,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TPR,Tapestry Inc,876030107,0.06,18007,2093133.68,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TRMB,Trimble Inc,896239100,0.04,20492,1231364.28,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TSCO,Tractor Supply Co,892356106,0.05,45552,1535102.4,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TSLA,Tesla Inc,88160R101,2.70,239478,91648230.6,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TT,Trane Technologies PLC,G8994E103,0.26,18752,8944328.96,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TWLO,Twilio Inc,90138F102,0.11,12979,3757031.13,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TXN,Texas Instruments Inc,882508104,0.64,76731,21771653.94,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,TYL,Tyler Technologies Inc,902252105,0.03,3117,1027207.35,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,UBER,Uber Technologies Inc,90353T100,0.36,171880,12291138.8,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ULTA,ULTA BEAUTY INC,90384S303,0.06,3385,1930702.45,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,UNP,Union Pacific Corp,907818108,0.41,50242,13984358.28,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,UPS,United Parcel Service Inc,911312106,0.18,63364,5992333.48,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,URI,United Rentals Inc,911363109,0.16,5185,5477278.45,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,VLTO,Veralto Corp,92338C103,0.06,20965,2032137.45,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,VMC,Vulcan Materials Co,929160109,0.08,11364,2779407.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,VRSN,VeriSign Inc,92343E102,0.06,6889,2092464.86,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,VRT,Vertiv Holdings Co,92537N108,0.23,32740,7948617.2,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,VRTX,Vertex Pharmaceuticals Inc,92532F100,0.32,21589,11012117.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,VYLR,Vylor Inc,92892R108,0.13,58873,4306559.95,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WAB,Westinghouse Air Brake Technologies Corp,929740108,0.12,14267,4072229.81,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WAT,Waters Corp,941848103,0.10,7943,3445435.11,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WDAY,Workday Inc,98138H101,0.10,18445,3441652.55,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WELL,Welltower Inc,95040Q104,0.40,59433,13400358.51,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WM,Waste Management Inc,94106L109,0.20,31646,6608634.18,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WSM,Williams-Sonoma Inc,969904101,0.07,9943,2404018.54,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WST,West Pharmaceutical Services Inc,955306105,0.06,5490,2009340.0,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,WY,Weyerhaeuser Co,962166104,0.04,62956,1202459.6,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,XOM,ExxonMobil Holdings Corp,30233Q108,1.74,349756,59087778.64,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,XYL,Xylem Inc/NY,98419M100,0.06,20732,2129383.72,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
+SPUS,ZBRA,Zebra Technologies Corp,989207105,0.04,3484,1348935.12,2026-10-12,https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv
