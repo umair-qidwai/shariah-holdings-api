@@ -1,6 +1,6 @@
 {
-  "acquired_at": "2026-10-24T01:45:50Z",
-  "checked_at": "2026-10-24T01:45:50Z",
+  "acquired_at": "2026-10-27T02:14:49Z",
+  "checked_at": "2026-10-27T02:14:49Z",
   "funds": [
     {
       "excluded_row_count": 2,
@@ -18,7 +18,7 @@
       ],
       "fund": "HLAL",
       "holding_count": 199,
-      "holdings_date": "2026-10-23",
+      "holdings_date": "2026-10-26",
       "source_row_count": 201,
       "source_url": "https://docs.google.com/spreadsheets/d/1UC1Bk67bGuYsos_i8y_HQpNoHpVHAvqf71MbgrafJOQ/export?format=csv&gid=0"
     },
@@ -52,7 +52,7 @@
       "exclusions": [
         {
           "reason": "cash_or_money_market",
-          "row_number": 60,
+          "row_number": 62,
           "symbol": "CASH&OTHER"
         },
         {
@@ -68,7 +68,7 @@
       ],
       "fund": "SPUS",
       "holding_count": 215,
-      "holdings_date": "2026-10-23",
+      "holdings_date": "2026-10-26",
       "source_row_count": 218,
       "source_url": "https://www.sp-funds.com/wp-content/uploads/data/TidalFG_Holdings_SPUS.csv"
     }
